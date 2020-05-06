@@ -13,7 +13,7 @@
  * You should have received a copy of the GNU General Public License                 *
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.            *
  ************************************************************************************/
-class BusinessData {
+class SystemCore {
 
   /**
    * Constructor, No authentication required
@@ -163,4 +163,4 @@ class BusinessData {
   }
 }
 
-module.exports = BusinessData;
+module.exports = SystemCore;
