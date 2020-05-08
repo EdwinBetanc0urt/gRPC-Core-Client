@@ -185,6 +185,7 @@ message BusinessPartner {
 	string name = 7;
 	string lastName = 8;
 	string description = 9;
+
 }
 
 // Document Type definition
@@ -192,7 +193,7 @@ message DocumentType {
 	string uuid = 1;
 	int32 id = 2;
 	string name = 3;
-	string printerName = 4;
+	string printName = 4;
 	string description = 5;
 }
 

@@ -4708,7 +4708,7 @@ proto.data.DocumentType.toObject = function(includeInstance, msg) {
     uuid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     id: jspb.Message.getFieldWithDefault(msg, 2, 0),
     name: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    printername: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    printname: jspb.Message.getFieldWithDefault(msg, 4, ""),
     description: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
@@ -4760,7 +4760,7 @@ proto.data.DocumentType.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setPrintername(value);
+      msg.setPrintname(value);
       break;
     case 5:
       var value = /** @type {string} */ (reader.readString());
@@ -4816,7 +4816,7 @@ proto.data.DocumentType.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getPrintername();
+  f = message.getPrintname();
   if (f.length > 0) {
     writer.writeString(
       4,
@@ -4879,16 +4879,16 @@ proto.data.DocumentType.prototype.setName = function(value) {
 
 
 /**
- * optional string printerName = 4;
+ * optional string printName = 4;
  * @return {string}
  */
-proto.data.DocumentType.prototype.getPrintername = function() {
+proto.data.DocumentType.prototype.getPrintname = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /** @param {string} value */
-proto.data.DocumentType.prototype.setPrintername = function(value) {
+proto.data.DocumentType.prototype.setPrintname = function(value) {
   jspb.Message.setProto3StringField(this, 4, value);
 };
 
