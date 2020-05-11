@@ -50,6 +50,27 @@ class SystemCore {
     return requestService;
   }
 
+  getClientRequest() {
+    const { ClientRequest } = require('./src/grpc/proto/core_functionality_pb.js');
+    const clientRequest = new ClientRequest();
+    clientRequest.setSessionuuid(this.sessionUuid);
+    clientRequest.setLanguage(this.language);
+    clientRequest.setOrganizationuuid(this.organizationUuid);
+    clientRequest.setWarehouseuuid(this.warehouseUuid);
+    return clientRequest;
+  }
+
+  /**
+   * Checks if value is empty. Deep-checks arrays and objects
+   * Note: isEmpty([]) == true, isEmpty({}) == true, isEmpty([{0:false},"",0]) == true, isEmpty({0:1}) == false
+   * @param   {boolean|array|object|number|string|date|map|function} value
+   * @returns {boolean}
+   */
+  static isEmptyValue(value) {
+    const { isEmptyValue } = require('./src/convertValues.js');
+    return isEmptyValue(value);
+  }
+
   /**
    * Get Country Information
    * @param {string} countryUuid, Universally Unique IDentifier from country
@@ -69,7 +90,7 @@ class SystemCore {
     return this.getCoreFunctionalityService().getCountry(request)
       .then(countryResponse => {
         if (isConvert) {
-          const { convertCountryFromGRPC } = require('./src/convertUtils');
+          const { convertCountryFromGRPC } = require('./src/convertCoreFunctionality.js');
           return convertCountryFromGRPC(countryResponse);
         }
         return countryResponse;
@@ -90,7 +111,7 @@ class SystemCore {
     return this.getCoreFunctionalityService().listOrganizations(request)
       .then(organizationsListResponse => {
         if (isConvert) {
-          const { convertOrganizationFromGRPC } = require('./src/convertUtils');
+          const { convertOrganizationFromGRPC } = require('./src/convertCoreFunctionality.js');
 
           return {
             recordCount: organizationsListResponse.getRecordcount(),
@@ -118,7 +139,7 @@ class SystemCore {
     return this.getCoreFunctionalityService().listWarehouses(request)
       .then(warehousesListResponse => {
         if (isConvert) {
-          const { convertWarehouseFromGRPC } = require('./src/convertUtils');
+          const { convertWarehouseFromGRPC } = require('./src/convertCoreFunctionality.js');
 
           return {
             recordCount: warehousesListResponse.getRecordcount(),
@@ -138,7 +159,7 @@ class SystemCore {
    * @param {string}  pageSize
    */
   requestListLanguages({ pageToken, pageSize, isConvert = true }) {
-    const { ListLanguagesRequest } = require('./src/grpc/proto/business_pb.js');
+    const { ListLanguagesRequest } = require('./src/grpc/proto/core_functionality_pb.js');
     const request = new ListLanguagesRequest();
 
     request.setClientrequest(this.getClientRequest());
@@ -148,7 +169,7 @@ class SystemCore {
     return this.getCoreFunctionalityService().listLanguages(request)
       .then(languageResponse => {
         if (isConvert) {
-          const { convertLanguageFromGRPC } = require('./src/convertUtils.js');
+          const { convertLanguageFromGRPC } = require('./src/convertCoreFunctionality.js');
 
           return {
             recordCount: languageResponse.getRecordcount(),
