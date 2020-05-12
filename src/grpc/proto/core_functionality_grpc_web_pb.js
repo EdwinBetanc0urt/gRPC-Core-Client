@@ -39,16 +39,6 @@ proto.data.CoreFunctionalityClient =
    */
   this.hostname_ = hostname;
 
-  /**
-   * @private @const {?Object} The credentials to be used to connect
-   *    to the server
-   */
-  this.credentials_ = credentials;
-
-  /**
-   * @private @const {?Object} Options for the client
-   */
-  this.options_ = options;
 };
 
 
@@ -75,17 +65,29 @@ proto.data.CoreFunctionalityPromiseClient =
    */
   this.hostname_ = hostname;
 
-  /**
-   * @private @const {?Object} The credentials to be used to connect
-   *    to the server
-   */
-  this.credentials_ = credentials;
-
-  /**
-   * @private @const {?Object} Options for the client
-   */
-  this.options_ = options;
 };
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.data.GetCountryRequest,
+ *   !proto.data.Country>}
+ */
+const methodDescriptor_CoreFunctionality_GetCountry = new grpc.web.MethodDescriptor(
+  '/data.CoreFunctionality/GetCountry',
+  grpc.web.MethodType.UNARY,
+  proto.data.GetCountryRequest,
+  proto.data.Country,
+  /**
+   * @param {!proto.data.GetCountryRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.Country.deserializeBinary
+);
 
 
 /**
@@ -96,7 +98,10 @@ proto.data.CoreFunctionalityPromiseClient =
  */
 const methodInfo_CoreFunctionality_GetCountry = new grpc.web.AbstractClientBase.MethodInfo(
   proto.data.Country,
-  /** @param {!proto.data.GetCountryRequest} request */
+  /**
+   * @param {!proto.data.GetCountryRequest} request
+   * @return {!Uint8Array}
+   */
   function(request) {
     return request.serializeBinary();
   },
@@ -120,7 +125,7 @@ proto.data.CoreFunctionalityClient.prototype.getCountry =
       '/data.CoreFunctionality/GetCountry',
       request,
       metadata || {},
-      methodInfo_CoreFunctionality_GetCountry,
+      methodDescriptor_CoreFunctionality_GetCountry,
       callback);
 };
 
@@ -139,8 +144,30 @@ proto.data.CoreFunctionalityPromiseClient.prototype.getCountry =
       '/data.CoreFunctionality/GetCountry',
       request,
       metadata || {},
-      methodInfo_CoreFunctionality_GetCountry);
+      methodDescriptor_CoreFunctionality_GetCountry);
 };
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.data.ListOrganizationsRequest,
+ *   !proto.data.ListOrganizationsResponse>}
+ */
+const methodDescriptor_CoreFunctionality_ListOrganizations = new grpc.web.MethodDescriptor(
+  '/data.CoreFunctionality/ListOrganizations',
+  grpc.web.MethodType.UNARY,
+  proto.data.ListOrganizationsRequest,
+  proto.data.ListOrganizationsResponse,
+  /**
+   * @param {!proto.data.ListOrganizationsRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.ListOrganizationsResponse.deserializeBinary
+);
 
 
 /**
@@ -151,7 +178,10 @@ proto.data.CoreFunctionalityPromiseClient.prototype.getCountry =
  */
 const methodInfo_CoreFunctionality_ListOrganizations = new grpc.web.AbstractClientBase.MethodInfo(
   proto.data.ListOrganizationsResponse,
-  /** @param {!proto.data.ListOrganizationsRequest} request */
+  /**
+   * @param {!proto.data.ListOrganizationsRequest} request
+   * @return {!Uint8Array}
+   */
   function(request) {
     return request.serializeBinary();
   },
@@ -175,7 +205,7 @@ proto.data.CoreFunctionalityClient.prototype.listOrganizations =
       '/data.CoreFunctionality/ListOrganizations',
       request,
       metadata || {},
-      methodInfo_CoreFunctionality_ListOrganizations,
+      methodDescriptor_CoreFunctionality_ListOrganizations,
       callback);
 };
 
@@ -194,8 +224,30 @@ proto.data.CoreFunctionalityPromiseClient.prototype.listOrganizations =
       '/data.CoreFunctionality/ListOrganizations',
       request,
       metadata || {},
-      methodInfo_CoreFunctionality_ListOrganizations);
+      methodDescriptor_CoreFunctionality_ListOrganizations);
 };
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.data.ListWarehousesRequest,
+ *   !proto.data.ListWarehousesResponse>}
+ */
+const methodDescriptor_CoreFunctionality_ListWarehouses = new grpc.web.MethodDescriptor(
+  '/data.CoreFunctionality/ListWarehouses',
+  grpc.web.MethodType.UNARY,
+  proto.data.ListWarehousesRequest,
+  proto.data.ListWarehousesResponse,
+  /**
+   * @param {!proto.data.ListWarehousesRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.ListWarehousesResponse.deserializeBinary
+);
 
 
 /**
@@ -206,7 +258,10 @@ proto.data.CoreFunctionalityPromiseClient.prototype.listOrganizations =
  */
 const methodInfo_CoreFunctionality_ListWarehouses = new grpc.web.AbstractClientBase.MethodInfo(
   proto.data.ListWarehousesResponse,
-  /** @param {!proto.data.ListWarehousesRequest} request */
+  /**
+   * @param {!proto.data.ListWarehousesRequest} request
+   * @return {!Uint8Array}
+   */
   function(request) {
     return request.serializeBinary();
   },
@@ -230,7 +285,7 @@ proto.data.CoreFunctionalityClient.prototype.listWarehouses =
       '/data.CoreFunctionality/ListWarehouses',
       request,
       metadata || {},
-      methodInfo_CoreFunctionality_ListWarehouses,
+      methodDescriptor_CoreFunctionality_ListWarehouses,
       callback);
 };
 
@@ -249,8 +304,30 @@ proto.data.CoreFunctionalityPromiseClient.prototype.listWarehouses =
       '/data.CoreFunctionality/ListWarehouses',
       request,
       metadata || {},
-      methodInfo_CoreFunctionality_ListWarehouses);
+      methodDescriptor_CoreFunctionality_ListWarehouses);
 };
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.data.ListLanguagesRequest,
+ *   !proto.data.ListLanguagesResponse>}
+ */
+const methodDescriptor_CoreFunctionality_ListLanguages = new grpc.web.MethodDescriptor(
+  '/data.CoreFunctionality/ListLanguages',
+  grpc.web.MethodType.UNARY,
+  proto.data.ListLanguagesRequest,
+  proto.data.ListLanguagesResponse,
+  /**
+   * @param {!proto.data.ListLanguagesRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.ListLanguagesResponse.deserializeBinary
+);
 
 
 /**
@@ -261,7 +338,10 @@ proto.data.CoreFunctionalityPromiseClient.prototype.listWarehouses =
  */
 const methodInfo_CoreFunctionality_ListLanguages = new grpc.web.AbstractClientBase.MethodInfo(
   proto.data.ListLanguagesResponse,
-  /** @param {!proto.data.ListLanguagesRequest} request */
+  /**
+   * @param {!proto.data.ListLanguagesRequest} request
+   * @return {!Uint8Array}
+   */
   function(request) {
     return request.serializeBinary();
   },
@@ -285,7 +365,7 @@ proto.data.CoreFunctionalityClient.prototype.listLanguages =
       '/data.CoreFunctionality/ListLanguages',
       request,
       metadata || {},
-      methodInfo_CoreFunctionality_ListLanguages,
+      methodDescriptor_CoreFunctionality_ListLanguages,
       callback);
 };
 
@@ -304,7 +384,7 @@ proto.data.CoreFunctionalityPromiseClient.prototype.listLanguages =
       '/data.CoreFunctionality/ListLanguages',
       request,
       metadata || {},
-      methodInfo_CoreFunctionality_ListLanguages);
+      methodDescriptor_CoreFunctionality_ListLanguages);
 };
 
 

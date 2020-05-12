@@ -1,3 +1,4 @@
+// source: proto/core_functionality.proto
 /**
  * @fileoverview
  * @enhanceable
@@ -632,9 +633,12 @@ proto.data.ClientRequest.prototype.getSessionuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ClientRequest} returns this
+ */
 proto.data.ClientRequest.prototype.setSessionuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -647,9 +651,12 @@ proto.data.ClientRequest.prototype.getLanguage = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ClientRequest} returns this
+ */
 proto.data.ClientRequest.prototype.setLanguage = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -662,9 +669,12 @@ proto.data.ClientRequest.prototype.getOrganizationuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ClientRequest} returns this
+ */
 proto.data.ClientRequest.prototype.setOrganizationuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -677,9 +687,12 @@ proto.data.ClientRequest.prototype.getWarehouseuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ClientRequest} returns this
+ */
 proto.data.ClientRequest.prototype.setWarehouseuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -830,9 +843,12 @@ proto.data.GetCountryRequest.prototype.getCountryuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.GetCountryRequest} returns this
+ */
 proto.data.GetCountryRequest.prototype.setCountryuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -845,9 +861,12 @@ proto.data.GetCountryRequest.prototype.getCountryid = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.GetCountryRequest} returns this
+ */
 proto.data.GetCountryRequest.prototype.setCountryid = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -861,17 +880,21 @@ proto.data.GetCountryRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.GetCountryRequest} returns this
+*/
 proto.data.GetCountryRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 3, value);
+  return jspb.Message.setWrapperField(this, 3, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.GetCountryRequest} returns this
  */
 proto.data.GetCountryRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -1032,17 +1055,21 @@ proto.data.ListLanguagesRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.ListLanguagesRequest} returns this
+*/
 proto.data.ListLanguagesRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ListLanguagesRequest} returns this
  */
 proto.data.ListLanguagesRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -1064,9 +1091,12 @@ proto.data.ListLanguagesRequest.prototype.getPageSize = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListLanguagesRequest} returns this
+ */
 proto.data.ListLanguagesRequest.prototype.setPageSize = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -1079,9 +1109,12 @@ proto.data.ListLanguagesRequest.prototype.getPageToken = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListLanguagesRequest} returns this
+ */
 proto.data.ListLanguagesRequest.prototype.setPageToken = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -1240,9 +1273,12 @@ proto.data.ListLanguagesResponse.prototype.getRecordcount = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListLanguagesResponse} returns this
+ */
 proto.data.ListLanguagesResponse.prototype.setRecordcount = function(value) {
-  jspb.Message.setProto3IntField(this, 1, value);
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
@@ -1256,9 +1292,12 @@ proto.data.ListLanguagesResponse.prototype.getLanguagesList = function() {
 };
 
 
-/** @param {!Array<!proto.data.Language>} value */
+/**
+ * @param {!Array<!proto.data.Language>} value
+ * @return {!proto.data.ListLanguagesResponse} returns this
+*/
 proto.data.ListLanguagesResponse.prototype.setLanguagesList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 2, value);
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
 
 
@@ -1274,9 +1313,10 @@ proto.data.ListLanguagesResponse.prototype.addLanguages = function(opt_value, op
 
 /**
  * Clears the list making it empty but non-null.
+ * @return {!proto.data.ListLanguagesResponse} returns this
  */
 proto.data.ListLanguagesResponse.prototype.clearLanguagesList = function() {
-  this.setLanguagesList([]);
+  return this.setLanguagesList([]);
 };
 
 
@@ -1289,9 +1329,12 @@ proto.data.ListLanguagesResponse.prototype.getNextPageToken = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListLanguagesResponse} returns this
+ */
 proto.data.ListLanguagesResponse.prototype.setNextPageToken = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -1670,9 +1713,12 @@ proto.data.Country.prototype.getUuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setUuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -1685,9 +1731,12 @@ proto.data.Country.prototype.getId = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setId = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -1700,9 +1749,12 @@ proto.data.Country.prototype.getCountrycode = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setCountrycode = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -1715,9 +1767,12 @@ proto.data.Country.prototype.getName = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -1730,9 +1785,12 @@ proto.data.Country.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -1745,9 +1803,12 @@ proto.data.Country.prototype.getHasregion = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setHasregion = function(value) {
-  jspb.Message.setProto3BooleanField(this, 6, value);
+  return jspb.Message.setProto3BooleanField(this, 6, value);
 };
 
 
@@ -1760,9 +1821,12 @@ proto.data.Country.prototype.getRegionname = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setRegionname = function(value) {
-  jspb.Message.setProto3StringField(this, 7, value);
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
@@ -1775,9 +1839,12 @@ proto.data.Country.prototype.getDisplaysequence = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setDisplaysequence = function(value) {
-  jspb.Message.setProto3StringField(this, 8, value);
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
@@ -1790,9 +1857,12 @@ proto.data.Country.prototype.getIsaddresslinesreverse = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setIsaddresslinesreverse = function(value) {
-  jspb.Message.setProto3BooleanField(this, 9, value);
+  return jspb.Message.setProto3BooleanField(this, 9, value);
 };
 
 
@@ -1805,9 +1875,12 @@ proto.data.Country.prototype.getCapturesequence = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setCapturesequence = function(value) {
-  jspb.Message.setProto3StringField(this, 10, value);
+  return jspb.Message.setProto3StringField(this, 10, value);
 };
 
 
@@ -1820,9 +1893,12 @@ proto.data.Country.prototype.getDisplaysequencelocal = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setDisplaysequencelocal = function(value) {
-  jspb.Message.setProto3StringField(this, 11, value);
+  return jspb.Message.setProto3StringField(this, 11, value);
 };
 
 
@@ -1835,9 +1911,12 @@ proto.data.Country.prototype.getIsaddresslineslocalreverse = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setIsaddresslineslocalreverse = function(value) {
-  jspb.Message.setProto3BooleanField(this, 12, value);
+  return jspb.Message.setProto3BooleanField(this, 12, value);
 };
 
 
@@ -1850,9 +1929,12 @@ proto.data.Country.prototype.getExpressionpostal = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setExpressionpostal = function(value) {
-  jspb.Message.setProto3StringField(this, 13, value);
+  return jspb.Message.setProto3StringField(this, 13, value);
 };
 
 
@@ -1865,9 +1947,12 @@ proto.data.Country.prototype.getHaspostaladd = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setHaspostaladd = function(value) {
-  jspb.Message.setProto3BooleanField(this, 14, value);
+  return jspb.Message.setProto3BooleanField(this, 14, value);
 };
 
 
@@ -1880,9 +1965,12 @@ proto.data.Country.prototype.getExpressionphone = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setExpressionphone = function(value) {
-  jspb.Message.setProto3StringField(this, 15, value);
+  return jspb.Message.setProto3StringField(this, 15, value);
 };
 
 
@@ -1895,9 +1983,12 @@ proto.data.Country.prototype.getMediasize = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setMediasize = function(value) {
-  jspb.Message.setProto3StringField(this, 16, value);
+  return jspb.Message.setProto3StringField(this, 16, value);
 };
 
 
@@ -1910,9 +2001,12 @@ proto.data.Country.prototype.getExpressionbankroutingno = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setExpressionbankroutingno = function(value) {
-  jspb.Message.setProto3StringField(this, 17, value);
+  return jspb.Message.setProto3StringField(this, 17, value);
 };
 
 
@@ -1925,9 +2019,12 @@ proto.data.Country.prototype.getExpressionbankaccountno = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setExpressionbankaccountno = function(value) {
-  jspb.Message.setProto3StringField(this, 18, value);
+  return jspb.Message.setProto3StringField(this, 18, value);
 };
 
 
@@ -1940,9 +2037,12 @@ proto.data.Country.prototype.getLanguage = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setLanguage = function(value) {
-  jspb.Message.setProto3StringField(this, 19, value);
+  return jspb.Message.setProto3StringField(this, 19, value);
 };
 
 
@@ -1955,9 +2055,12 @@ proto.data.Country.prototype.getAllowcitiesoutoflist = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setAllowcitiesoutoflist = function(value) {
-  jspb.Message.setProto3BooleanField(this, 20, value);
+  return jspb.Message.setProto3BooleanField(this, 20, value);
 };
 
 
@@ -1970,9 +2073,12 @@ proto.data.Country.prototype.getIspostcodelookup = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.Country} returns this
+ */
 proto.data.Country.prototype.setIspostcodelookup = function(value) {
-  jspb.Message.setProto3BooleanField(this, 21, value);
+  return jspb.Message.setProto3BooleanField(this, 21, value);
 };
 
 
@@ -1986,17 +2092,21 @@ proto.data.Country.prototype.getCurrency = function() {
 };
 
 
-/** @param {?proto.data.Currency|undefined} value */
+/**
+ * @param {?proto.data.Currency|undefined} value
+ * @return {!proto.data.Country} returns this
+*/
 proto.data.Country.prototype.setCurrency = function(value) {
-  jspb.Message.setWrapperField(this, 22, value);
+  return jspb.Message.setWrapperField(this, 22, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.Country} returns this
  */
 proto.data.Country.prototype.clearCurrency = function() {
-  this.setCurrency(undefined);
+  return this.setCurrency(undefined);
 };
 
 
@@ -2202,9 +2312,12 @@ proto.data.Currency.prototype.getUuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Currency} returns this
+ */
 proto.data.Currency.prototype.setUuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -2217,9 +2330,12 @@ proto.data.Currency.prototype.getId = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.Currency} returns this
+ */
 proto.data.Currency.prototype.setId = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -2232,9 +2348,12 @@ proto.data.Currency.prototype.getIsocode = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Currency} returns this
+ */
 proto.data.Currency.prototype.setIsocode = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -2247,9 +2366,12 @@ proto.data.Currency.prototype.getCursymbol = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Currency} returns this
+ */
 proto.data.Currency.prototype.setCursymbol = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -2262,9 +2384,12 @@ proto.data.Currency.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Currency} returns this
+ */
 proto.data.Currency.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -2277,9 +2402,12 @@ proto.data.Currency.prototype.getStdprecision = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.Currency} returns this
+ */
 proto.data.Currency.prototype.setStdprecision = function(value) {
-  jspb.Message.setProto3IntField(this, 6, value);
+  return jspb.Message.setProto3IntField(this, 6, value);
 };
 
 
@@ -2292,9 +2420,12 @@ proto.data.Currency.prototype.getCostingprecision = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.Currency} returns this
+ */
 proto.data.Currency.prototype.setCostingprecision = function(value) {
-  jspb.Message.setProto3IntField(this, 7, value);
+  return jspb.Message.setProto3IntField(this, 7, value);
 };
 
 
@@ -2527,9 +2658,12 @@ proto.data.Organization.prototype.getUuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Organization} returns this
+ */
 proto.data.Organization.prototype.setUuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -2542,9 +2676,12 @@ proto.data.Organization.prototype.getId = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.Organization} returns this
+ */
 proto.data.Organization.prototype.setId = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -2557,9 +2694,12 @@ proto.data.Organization.prototype.getName = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Organization} returns this
+ */
 proto.data.Organization.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -2572,9 +2712,12 @@ proto.data.Organization.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Organization} returns this
+ */
 proto.data.Organization.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -2587,9 +2730,12 @@ proto.data.Organization.prototype.getIsreadonly = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.Organization} returns this
+ */
 proto.data.Organization.prototype.setIsreadonly = function(value) {
-  jspb.Message.setProto3BooleanField(this, 5, value);
+  return jspb.Message.setProto3BooleanField(this, 5, value);
 };
 
 
@@ -2602,9 +2748,12 @@ proto.data.Organization.prototype.getDuns = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Organization} returns this
+ */
 proto.data.Organization.prototype.setDuns = function(value) {
-  jspb.Message.setProto3StringField(this, 6, value);
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
@@ -2617,9 +2766,12 @@ proto.data.Organization.prototype.getTaxid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Organization} returns this
+ */
 proto.data.Organization.prototype.setTaxid = function(value) {
-  jspb.Message.setProto3StringField(this, 7, value);
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
@@ -2632,9 +2784,12 @@ proto.data.Organization.prototype.getPhone = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Organization} returns this
+ */
 proto.data.Organization.prototype.setPhone = function(value) {
-  jspb.Message.setProto3StringField(this, 8, value);
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
@@ -2647,9 +2802,12 @@ proto.data.Organization.prototype.getPhone2 = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Organization} returns this
+ */
 proto.data.Organization.prototype.setPhone2 = function(value) {
-  jspb.Message.setProto3StringField(this, 9, value);
+  return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
@@ -2662,9 +2820,12 @@ proto.data.Organization.prototype.getFax = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Organization} returns this
+ */
 proto.data.Organization.prototype.setFax = function(value) {
-  jspb.Message.setProto3StringField(this, 10, value);
+  return jspb.Message.setProto3StringField(this, 10, value);
 };
 
 
@@ -2823,9 +2984,12 @@ proto.data.ListOrganizationsResponse.prototype.getRecordcount = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListOrganizationsResponse} returns this
+ */
 proto.data.ListOrganizationsResponse.prototype.setRecordcount = function(value) {
-  jspb.Message.setProto3IntField(this, 1, value);
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
@@ -2839,9 +3003,12 @@ proto.data.ListOrganizationsResponse.prototype.getOrganizationsList = function()
 };
 
 
-/** @param {!Array<!proto.data.Organization>} value */
+/**
+ * @param {!Array<!proto.data.Organization>} value
+ * @return {!proto.data.ListOrganizationsResponse} returns this
+*/
 proto.data.ListOrganizationsResponse.prototype.setOrganizationsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 2, value);
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
 
 
@@ -2857,9 +3024,10 @@ proto.data.ListOrganizationsResponse.prototype.addOrganizations = function(opt_v
 
 /**
  * Clears the list making it empty but non-null.
+ * @return {!proto.data.ListOrganizationsResponse} returns this
  */
 proto.data.ListOrganizationsResponse.prototype.clearOrganizationsList = function() {
-  this.setOrganizationsList([]);
+  return this.setOrganizationsList([]);
 };
 
 
@@ -2872,9 +3040,12 @@ proto.data.ListOrganizationsResponse.prototype.getNextPageToken = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListOrganizationsResponse} returns this
+ */
 proto.data.ListOrganizationsResponse.prototype.setNextPageToken = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -3050,17 +3221,21 @@ proto.data.ListOrganizationsRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.ListOrganizationsRequest} returns this
+*/
 proto.data.ListOrganizationsRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ListOrganizationsRequest} returns this
  */
 proto.data.ListOrganizationsRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -3082,9 +3257,12 @@ proto.data.ListOrganizationsRequest.prototype.getRoleid = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListOrganizationsRequest} returns this
+ */
 proto.data.ListOrganizationsRequest.prototype.setRoleid = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -3097,9 +3275,12 @@ proto.data.ListOrganizationsRequest.prototype.getRoleuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListOrganizationsRequest} returns this
+ */
 proto.data.ListOrganizationsRequest.prototype.setRoleuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -3112,9 +3293,12 @@ proto.data.ListOrganizationsRequest.prototype.getPageSize = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListOrganizationsRequest} returns this
+ */
 proto.data.ListOrganizationsRequest.prototype.setPageSize = function(value) {
-  jspb.Message.setProto3IntField(this, 4, value);
+  return jspb.Message.setProto3IntField(this, 4, value);
 };
 
 
@@ -3127,9 +3311,12 @@ proto.data.ListOrganizationsRequest.prototype.getPageToken = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListOrganizationsRequest} returns this
+ */
 proto.data.ListOrganizationsRequest.prototype.setPageToken = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -3290,9 +3477,12 @@ proto.data.Warehouse.prototype.getUuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Warehouse} returns this
+ */
 proto.data.Warehouse.prototype.setUuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -3305,9 +3495,12 @@ proto.data.Warehouse.prototype.getId = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.Warehouse} returns this
+ */
 proto.data.Warehouse.prototype.setId = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -3320,9 +3513,12 @@ proto.data.Warehouse.prototype.getName = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Warehouse} returns this
+ */
 proto.data.Warehouse.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -3335,9 +3531,12 @@ proto.data.Warehouse.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Warehouse} returns this
+ */
 proto.data.Warehouse.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -3496,9 +3695,12 @@ proto.data.ListWarehousesResponse.prototype.getRecordcount = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListWarehousesResponse} returns this
+ */
 proto.data.ListWarehousesResponse.prototype.setRecordcount = function(value) {
-  jspb.Message.setProto3IntField(this, 1, value);
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
@@ -3512,9 +3714,12 @@ proto.data.ListWarehousesResponse.prototype.getWarehousesList = function() {
 };
 
 
-/** @param {!Array<!proto.data.Warehouse>} value */
+/**
+ * @param {!Array<!proto.data.Warehouse>} value
+ * @return {!proto.data.ListWarehousesResponse} returns this
+*/
 proto.data.ListWarehousesResponse.prototype.setWarehousesList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 2, value);
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
 
 
@@ -3530,9 +3735,10 @@ proto.data.ListWarehousesResponse.prototype.addWarehouses = function(opt_value, 
 
 /**
  * Clears the list making it empty but non-null.
+ * @return {!proto.data.ListWarehousesResponse} returns this
  */
 proto.data.ListWarehousesResponse.prototype.clearWarehousesList = function() {
-  this.setWarehousesList([]);
+  return this.setWarehousesList([]);
 };
 
 
@@ -3545,9 +3751,12 @@ proto.data.ListWarehousesResponse.prototype.getNextPageToken = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListWarehousesResponse} returns this
+ */
 proto.data.ListWarehousesResponse.prototype.setNextPageToken = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -3723,17 +3932,21 @@ proto.data.ListWarehousesRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.ListWarehousesRequest} returns this
+*/
 proto.data.ListWarehousesRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ListWarehousesRequest} returns this
  */
 proto.data.ListWarehousesRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -3755,9 +3968,12 @@ proto.data.ListWarehousesRequest.prototype.getOrganizationid = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListWarehousesRequest} returns this
+ */
 proto.data.ListWarehousesRequest.prototype.setOrganizationid = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -3770,9 +3986,12 @@ proto.data.ListWarehousesRequest.prototype.getOrganizationuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListWarehousesRequest} returns this
+ */
 proto.data.ListWarehousesRequest.prototype.setOrganizationuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -3785,9 +4004,12 @@ proto.data.ListWarehousesRequest.prototype.getPageSize = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListWarehousesRequest} returns this
+ */
 proto.data.ListWarehousesRequest.prototype.setPageSize = function(value) {
-  jspb.Message.setProto3IntField(this, 4, value);
+  return jspb.Message.setProto3IntField(this, 4, value);
 };
 
 
@@ -3800,9 +4022,12 @@ proto.data.ListWarehousesRequest.prototype.getPageToken = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListWarehousesRequest} returns this
+ */
 proto.data.ListWarehousesRequest.prototype.setPageToken = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -4011,9 +4236,12 @@ proto.data.UnitOfMeasure.prototype.getUuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.UnitOfMeasure} returns this
+ */
 proto.data.UnitOfMeasure.prototype.setUuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -4026,9 +4254,12 @@ proto.data.UnitOfMeasure.prototype.getId = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.UnitOfMeasure} returns this
+ */
 proto.data.UnitOfMeasure.prototype.setId = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -4041,9 +4272,12 @@ proto.data.UnitOfMeasure.prototype.getCode = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.UnitOfMeasure} returns this
+ */
 proto.data.UnitOfMeasure.prototype.setCode = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -4056,9 +4290,12 @@ proto.data.UnitOfMeasure.prototype.getSymbol = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.UnitOfMeasure} returns this
+ */
 proto.data.UnitOfMeasure.prototype.setSymbol = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -4071,9 +4308,12 @@ proto.data.UnitOfMeasure.prototype.getName = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.UnitOfMeasure} returns this
+ */
 proto.data.UnitOfMeasure.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -4086,9 +4326,12 @@ proto.data.UnitOfMeasure.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.UnitOfMeasure} returns this
+ */
 proto.data.UnitOfMeasure.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 6, value);
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
@@ -4101,9 +4344,12 @@ proto.data.UnitOfMeasure.prototype.getStdprecision = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.UnitOfMeasure} returns this
+ */
 proto.data.UnitOfMeasure.prototype.setStdprecision = function(value) {
-  jspb.Message.setProto3IntField(this, 7, value);
+  return jspb.Message.setProto3IntField(this, 7, value);
 };
 
 
@@ -4116,9 +4362,12 @@ proto.data.UnitOfMeasure.prototype.getCostingprecision = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.UnitOfMeasure} returns this
+ */
 proto.data.UnitOfMeasure.prototype.setCostingprecision = function(value) {
-  jspb.Message.setProto3IntField(this, 8, value);
+  return jspb.Message.setProto3IntField(this, 8, value);
 };
 
 
@@ -4279,9 +4528,12 @@ proto.data.Charge.prototype.getUuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Charge} returns this
+ */
 proto.data.Charge.prototype.setUuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -4294,9 +4546,12 @@ proto.data.Charge.prototype.getId = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.Charge} returns this
+ */
 proto.data.Charge.prototype.setId = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -4309,9 +4564,12 @@ proto.data.Charge.prototype.getName = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Charge} returns this
+ */
 proto.data.Charge.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -4324,9 +4582,12 @@ proto.data.Charge.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Charge} returns this
+ */
 proto.data.Charge.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -4547,9 +4808,12 @@ proto.data.BusinessPartner.prototype.getUuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.BusinessPartner} returns this
+ */
 proto.data.BusinessPartner.prototype.setUuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -4562,9 +4826,12 @@ proto.data.BusinessPartner.prototype.getId = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.BusinessPartner} returns this
+ */
 proto.data.BusinessPartner.prototype.setId = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -4577,9 +4844,12 @@ proto.data.BusinessPartner.prototype.getValue = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.BusinessPartner} returns this
+ */
 proto.data.BusinessPartner.prototype.setValue = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -4592,9 +4862,12 @@ proto.data.BusinessPartner.prototype.getTaxid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.BusinessPartner} returns this
+ */
 proto.data.BusinessPartner.prototype.setTaxid = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -4607,9 +4880,12 @@ proto.data.BusinessPartner.prototype.getDuns = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.BusinessPartner} returns this
+ */
 proto.data.BusinessPartner.prototype.setDuns = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -4622,9 +4898,12 @@ proto.data.BusinessPartner.prototype.getNaics = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.BusinessPartner} returns this
+ */
 proto.data.BusinessPartner.prototype.setNaics = function(value) {
-  jspb.Message.setProto3StringField(this, 6, value);
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
@@ -4637,9 +4916,12 @@ proto.data.BusinessPartner.prototype.getName = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.BusinessPartner} returns this
+ */
 proto.data.BusinessPartner.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 7, value);
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
@@ -4652,9 +4934,12 @@ proto.data.BusinessPartner.prototype.getLastname = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.BusinessPartner} returns this
+ */
 proto.data.BusinessPartner.prototype.setLastname = function(value) {
-  jspb.Message.setProto3StringField(this, 8, value);
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
@@ -4667,9 +4952,12 @@ proto.data.BusinessPartner.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.BusinessPartner} returns this
+ */
 proto.data.BusinessPartner.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 9, value);
+  return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
@@ -4842,9 +5130,12 @@ proto.data.DocumentType.prototype.getUuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.DocumentType} returns this
+ */
 proto.data.DocumentType.prototype.setUuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -4857,9 +5148,12 @@ proto.data.DocumentType.prototype.getId = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.DocumentType} returns this
+ */
 proto.data.DocumentType.prototype.setId = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -4872,9 +5166,12 @@ proto.data.DocumentType.prototype.getName = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.DocumentType} returns this
+ */
 proto.data.DocumentType.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -4887,9 +5184,12 @@ proto.data.DocumentType.prototype.getPrintname = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.DocumentType} returns this
+ */
 proto.data.DocumentType.prototype.setPrintname = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -4902,9 +5202,12 @@ proto.data.DocumentType.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.DocumentType} returns this
+ */
 proto.data.DocumentType.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -5065,9 +5368,12 @@ proto.data.SalesRepresentative.prototype.getUuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.SalesRepresentative} returns this
+ */
 proto.data.SalesRepresentative.prototype.setUuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -5080,9 +5386,12 @@ proto.data.SalesRepresentative.prototype.getId = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.SalesRepresentative} returns this
+ */
 proto.data.SalesRepresentative.prototype.setId = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -5095,9 +5404,12 @@ proto.data.SalesRepresentative.prototype.getName = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.SalesRepresentative} returns this
+ */
 proto.data.SalesRepresentative.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -5110,9 +5422,12 @@ proto.data.SalesRepresentative.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.SalesRepresentative} returns this
+ */
 proto.data.SalesRepresentative.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -5605,9 +5920,12 @@ proto.data.Product.prototype.getUuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setUuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -5620,9 +5938,12 @@ proto.data.Product.prototype.getId = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setId = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -5635,9 +5956,12 @@ proto.data.Product.prototype.getValue = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setValue = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -5650,9 +5974,12 @@ proto.data.Product.prototype.getName = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -5665,9 +5992,12 @@ proto.data.Product.prototype.getHelp = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setHelp = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -5680,9 +6010,12 @@ proto.data.Product.prototype.getDocumentnote = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setDocumentnote = function(value) {
-  jspb.Message.setProto3StringField(this, 6, value);
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
@@ -5695,9 +6028,12 @@ proto.data.Product.prototype.getUomname = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setUomname = function(value) {
-  jspb.Message.setProto3StringField(this, 7, value);
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
@@ -5710,9 +6046,12 @@ proto.data.Product.prototype.getProducttype = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setProducttype = function(value) {
-  jspb.Message.setProto3StringField(this, 8, value);
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
@@ -5725,9 +6064,12 @@ proto.data.Product.prototype.getIsstocked = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setIsstocked = function(value) {
-  jspb.Message.setProto3BooleanField(this, 9, value);
+  return jspb.Message.setProto3BooleanField(this, 9, value);
 };
 
 
@@ -5740,9 +6082,12 @@ proto.data.Product.prototype.getIsdropship = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setIsdropship = function(value) {
-  jspb.Message.setProto3BooleanField(this, 10, value);
+  return jspb.Message.setProto3BooleanField(this, 10, value);
 };
 
 
@@ -5755,9 +6100,12 @@ proto.data.Product.prototype.getIspurchased = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setIspurchased = function(value) {
-  jspb.Message.setProto3BooleanField(this, 11, value);
+  return jspb.Message.setProto3BooleanField(this, 11, value);
 };
 
 
@@ -5770,9 +6118,12 @@ proto.data.Product.prototype.getIssold = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setIssold = function(value) {
-  jspb.Message.setProto3BooleanField(this, 12, value);
+  return jspb.Message.setProto3BooleanField(this, 12, value);
 };
 
 
@@ -5785,9 +6136,12 @@ proto.data.Product.prototype.getImageurl = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setImageurl = function(value) {
-  jspb.Message.setProto3StringField(this, 13, value);
+  return jspb.Message.setProto3StringField(this, 13, value);
 };
 
 
@@ -5800,9 +6154,12 @@ proto.data.Product.prototype.getProductcategoryname = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setProductcategoryname = function(value) {
-  jspb.Message.setProto3StringField(this, 14, value);
+  return jspb.Message.setProto3StringField(this, 14, value);
 };
 
 
@@ -5815,9 +6172,12 @@ proto.data.Product.prototype.getProductgroupname = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setProductgroupname = function(value) {
-  jspb.Message.setProto3StringField(this, 15, value);
+  return jspb.Message.setProto3StringField(this, 15, value);
 };
 
 
@@ -5830,9 +6190,12 @@ proto.data.Product.prototype.getProductclassname = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setProductclassname = function(value) {
-  jspb.Message.setProto3StringField(this, 16, value);
+  return jspb.Message.setProto3StringField(this, 16, value);
 };
 
 
@@ -5845,9 +6208,12 @@ proto.data.Product.prototype.getProductclassificationname = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setProductclassificationname = function(value) {
-  jspb.Message.setProto3StringField(this, 17, value);
+  return jspb.Message.setProto3StringField(this, 17, value);
 };
 
 
@@ -5861,17 +6227,21 @@ proto.data.Product.prototype.getWeight = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.Product} returns this
+*/
 proto.data.Product.prototype.setWeight = function(value) {
-  jspb.Message.setWrapperField(this, 18, value);
+  return jspb.Message.setWrapperField(this, 18, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.Product} returns this
  */
 proto.data.Product.prototype.clearWeight = function() {
-  this.setWeight(undefined);
+  return this.setWeight(undefined);
 };
 
 
@@ -5894,17 +6264,21 @@ proto.data.Product.prototype.getVolume = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.Product} returns this
+*/
 proto.data.Product.prototype.setVolume = function(value) {
-  jspb.Message.setWrapperField(this, 19, value);
+  return jspb.Message.setWrapperField(this, 19, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.Product} returns this
  */
 proto.data.Product.prototype.clearVolume = function() {
-  this.setVolume(undefined);
+  return this.setVolume(undefined);
 };
 
 
@@ -5926,9 +6300,12 @@ proto.data.Product.prototype.getUpc = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setUpc = function(value) {
-  jspb.Message.setProto3StringField(this, 20, value);
+  return jspb.Message.setProto3StringField(this, 20, value);
 };
 
 
@@ -5941,9 +6318,12 @@ proto.data.Product.prototype.getSku = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setSku = function(value) {
-  jspb.Message.setProto3StringField(this, 21, value);
+  return jspb.Message.setProto3StringField(this, 21, value);
 };
 
 
@@ -5956,9 +6336,12 @@ proto.data.Product.prototype.getShelfwidth = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setShelfwidth = function(value) {
-  jspb.Message.setProto3IntField(this, 22, value);
+  return jspb.Message.setProto3IntField(this, 22, value);
 };
 
 
@@ -5972,17 +6355,21 @@ proto.data.Product.prototype.getShelfheight = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.Product} returns this
+*/
 proto.data.Product.prototype.setShelfheight = function(value) {
-  jspb.Message.setWrapperField(this, 23, value);
+  return jspb.Message.setWrapperField(this, 23, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.Product} returns this
  */
 proto.data.Product.prototype.clearShelfheight = function() {
-  this.setShelfheight(undefined);
+  return this.setShelfheight(undefined);
 };
 
 
@@ -6004,9 +6391,12 @@ proto.data.Product.prototype.getShelfdepth = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setShelfdepth = function(value) {
-  jspb.Message.setProto3IntField(this, 24, value);
+  return jspb.Message.setProto3IntField(this, 24, value);
 };
 
 
@@ -6019,9 +6409,12 @@ proto.data.Product.prototype.getUnitsperpack = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setUnitsperpack = function(value) {
-  jspb.Message.setProto3IntField(this, 25, value);
+  return jspb.Message.setProto3IntField(this, 25, value);
 };
 
 
@@ -6035,17 +6428,21 @@ proto.data.Product.prototype.getUnitsperpallet = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.Product} returns this
+*/
 proto.data.Product.prototype.setUnitsperpallet = function(value) {
-  jspb.Message.setWrapperField(this, 26, value);
+  return jspb.Message.setWrapperField(this, 26, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.Product} returns this
  */
 proto.data.Product.prototype.clearUnitsperpallet = function() {
-  this.setUnitsperpallet(undefined);
+  return this.setUnitsperpallet(undefined);
 };
 
 
@@ -6067,9 +6464,12 @@ proto.data.Product.prototype.getGuaranteedays = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setGuaranteedays = function(value) {
-  jspb.Message.setProto3IntField(this, 27, value);
+  return jspb.Message.setProto3IntField(this, 27, value);
 };
 
 
@@ -6082,9 +6482,12 @@ proto.data.Product.prototype.getDescriptionurl = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setDescriptionurl = function(value) {
-  jspb.Message.setProto3StringField(this, 28, value);
+  return jspb.Message.setProto3StringField(this, 28, value);
 };
 
 
@@ -6097,9 +6500,12 @@ proto.data.Product.prototype.getVersionno = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setVersionno = function(value) {
-  jspb.Message.setProto3StringField(this, 29, value);
+  return jspb.Message.setProto3StringField(this, 29, value);
 };
 
 
@@ -6112,9 +6518,12 @@ proto.data.Product.prototype.getTaxcategory = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setTaxcategory = function(value) {
-  jspb.Message.setProto3StringField(this, 30, value);
+  return jspb.Message.setProto3StringField(this, 30, value);
 };
 
 
@@ -6127,9 +6536,12 @@ proto.data.Product.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Product} returns this
+ */
 proto.data.Product.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 31, value);
+  return jspb.Message.setProto3StringField(this, 31, value);
 };
 
 
@@ -6316,9 +6728,12 @@ proto.data.TaxRate.prototype.getUuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.TaxRate} returns this
+ */
 proto.data.TaxRate.prototype.setUuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -6331,9 +6746,12 @@ proto.data.TaxRate.prototype.getId = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.TaxRate} returns this
+ */
 proto.data.TaxRate.prototype.setId = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -6346,9 +6764,12 @@ proto.data.TaxRate.prototype.getName = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.TaxRate} returns this
+ */
 proto.data.TaxRate.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -6361,9 +6782,12 @@ proto.data.TaxRate.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.TaxRate} returns this
+ */
 proto.data.TaxRate.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -6376,9 +6800,12 @@ proto.data.TaxRate.prototype.getTaxindicator = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.TaxRate} returns this
+ */
 proto.data.TaxRate.prototype.setTaxindicator = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -6392,17 +6819,21 @@ proto.data.TaxRate.prototype.getRate = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.TaxRate} returns this
+*/
 proto.data.TaxRate.prototype.setRate = function(value) {
-  jspb.Message.setWrapperField(this, 6, value);
+  return jspb.Message.setWrapperField(this, 6, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.TaxRate} returns this
  */
 proto.data.TaxRate.prototype.clearRate = function() {
-  this.setRate(undefined);
+  return this.setRate(undefined);
 };
 
 
@@ -6713,17 +7144,21 @@ proto.data.ProductPrice.prototype.getProduct = function() {
 };
 
 
-/** @param {?proto.data.Product|undefined} value */
+/**
+ * @param {?proto.data.Product|undefined} value
+ * @return {!proto.data.ProductPrice} returns this
+*/
 proto.data.ProductPrice.prototype.setProduct = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ProductPrice} returns this
  */
 proto.data.ProductPrice.prototype.clearProduct = function() {
-  this.setProduct(undefined);
+  return this.setProduct(undefined);
 };
 
 
@@ -6746,17 +7181,21 @@ proto.data.ProductPrice.prototype.getPricelist = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.ProductPrice} returns this
+*/
 proto.data.ProductPrice.prototype.setPricelist = function(value) {
-  jspb.Message.setWrapperField(this, 2, value);
+  return jspb.Message.setWrapperField(this, 2, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ProductPrice} returns this
  */
 proto.data.ProductPrice.prototype.clearPricelist = function() {
-  this.setPricelist(undefined);
+  return this.setPricelist(undefined);
 };
 
 
@@ -6779,17 +7218,21 @@ proto.data.ProductPrice.prototype.getPricestd = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.ProductPrice} returns this
+*/
 proto.data.ProductPrice.prototype.setPricestd = function(value) {
-  jspb.Message.setWrapperField(this, 3, value);
+  return jspb.Message.setWrapperField(this, 3, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ProductPrice} returns this
  */
 proto.data.ProductPrice.prototype.clearPricestd = function() {
-  this.setPricestd(undefined);
+  return this.setPricestd(undefined);
 };
 
 
@@ -6812,17 +7255,21 @@ proto.data.ProductPrice.prototype.getPricelimit = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.ProductPrice} returns this
+*/
 proto.data.ProductPrice.prototype.setPricelimit = function(value) {
-  jspb.Message.setWrapperField(this, 4, value);
+  return jspb.Message.setWrapperField(this, 4, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ProductPrice} returns this
  */
 proto.data.ProductPrice.prototype.clearPricelimit = function() {
-  this.setPricelimit(undefined);
+  return this.setPricelimit(undefined);
 };
 
 
@@ -6844,9 +7291,12 @@ proto.data.ProductPrice.prototype.getPricelistname = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ProductPrice} returns this
+ */
 proto.data.ProductPrice.prototype.setPricelistname = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -6859,9 +7309,12 @@ proto.data.ProductPrice.prototype.getIstaxincluded = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.ProductPrice} returns this
+ */
 proto.data.ProductPrice.prototype.setIstaxincluded = function(value) {
-  jspb.Message.setProto3BooleanField(this, 6, value);
+  return jspb.Message.setProto3BooleanField(this, 6, value);
 };
 
 
@@ -6874,9 +7327,12 @@ proto.data.ProductPrice.prototype.getValidfrom = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ProductPrice} returns this
+ */
 proto.data.ProductPrice.prototype.setValidfrom = function(value) {
-  jspb.Message.setProto3IntField(this, 7, value);
+  return jspb.Message.setProto3IntField(this, 7, value);
 };
 
 
@@ -6890,17 +7346,21 @@ proto.data.ProductPrice.prototype.getCurrency = function() {
 };
 
 
-/** @param {?proto.data.Currency|undefined} value */
+/**
+ * @param {?proto.data.Currency|undefined} value
+ * @return {!proto.data.ProductPrice} returns this
+*/
 proto.data.ProductPrice.prototype.setCurrency = function(value) {
-  jspb.Message.setWrapperField(this, 8, value);
+  return jspb.Message.setWrapperField(this, 8, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ProductPrice} returns this
  */
 proto.data.ProductPrice.prototype.clearCurrency = function() {
-  this.setCurrency(undefined);
+  return this.setCurrency(undefined);
 };
 
 
@@ -6923,17 +7383,21 @@ proto.data.ProductPrice.prototype.getTaxrate = function() {
 };
 
 
-/** @param {?proto.data.TaxRate|undefined} value */
+/**
+ * @param {?proto.data.TaxRate|undefined} value
+ * @return {!proto.data.ProductPrice} returns this
+*/
 proto.data.ProductPrice.prototype.setTaxrate = function(value) {
-  jspb.Message.setWrapperField(this, 9, value);
+  return jspb.Message.setWrapperField(this, 9, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ProductPrice} returns this
  */
 proto.data.ProductPrice.prototype.clearTaxrate = function() {
-  this.setTaxrate(undefined);
+  return this.setTaxrate(undefined);
 };
 
 
@@ -6955,9 +7419,12 @@ proto.data.ProductPrice.prototype.getPriceprecision = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ProductPrice} returns this
+ */
 proto.data.ProductPrice.prototype.setPriceprecision = function(value) {
-  jspb.Message.setProto3IntField(this, 10, value);
+  return jspb.Message.setProto3IntField(this, 10, value);
 };
 
 
@@ -6971,17 +7438,21 @@ proto.data.ProductPrice.prototype.getQuantityonhand = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.ProductPrice} returns this
+*/
 proto.data.ProductPrice.prototype.setQuantityonhand = function(value) {
-  jspb.Message.setWrapperField(this, 11, value);
+  return jspb.Message.setWrapperField(this, 11, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ProductPrice} returns this
  */
 proto.data.ProductPrice.prototype.clearQuantityonhand = function() {
-  this.setQuantityonhand(undefined);
+  return this.setQuantityonhand(undefined);
 };
 
 
@@ -7004,17 +7475,21 @@ proto.data.ProductPrice.prototype.getQuantityreserved = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.ProductPrice} returns this
+*/
 proto.data.ProductPrice.prototype.setQuantityreserved = function(value) {
-  jspb.Message.setWrapperField(this, 12, value);
+  return jspb.Message.setWrapperField(this, 12, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ProductPrice} returns this
  */
 proto.data.ProductPrice.prototype.clearQuantityreserved = function() {
-  this.setQuantityreserved(undefined);
+  return this.setQuantityreserved(undefined);
 };
 
 
@@ -7037,17 +7512,21 @@ proto.data.ProductPrice.prototype.getQuantityordered = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.ProductPrice} returns this
+*/
 proto.data.ProductPrice.prototype.setQuantityordered = function(value) {
-  jspb.Message.setWrapperField(this, 13, value);
+  return jspb.Message.setWrapperField(this, 13, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ProductPrice} returns this
  */
 proto.data.ProductPrice.prototype.clearQuantityordered = function() {
-  this.setQuantityordered(undefined);
+  return this.setQuantityordered(undefined);
 };
 
 
@@ -7070,17 +7549,21 @@ proto.data.ProductPrice.prototype.getQuantityavailable = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.ProductPrice} returns this
+*/
 proto.data.ProductPrice.prototype.setQuantityavailable = function(value) {
-  jspb.Message.setWrapperField(this, 14, value);
+  return jspb.Message.setWrapperField(this, 14, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ProductPrice} returns this
  */
 proto.data.ProductPrice.prototype.clearQuantityavailable = function() {
-  this.setQuantityavailable(undefined);
+  return this.setQuantityavailable(undefined);
 };
 
 
@@ -7310,9 +7793,12 @@ proto.data.Language.prototype.getLanguage = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Language} returns this
+ */
 proto.data.Language.prototype.setLanguage = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -7325,9 +7811,12 @@ proto.data.Language.prototype.getLanguagename = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Language} returns this
+ */
 proto.data.Language.prototype.setLanguagename = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -7340,9 +7829,12 @@ proto.data.Language.prototype.getLanguageiso = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Language} returns this
+ */
 proto.data.Language.prototype.setLanguageiso = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -7355,9 +7847,12 @@ proto.data.Language.prototype.getCountrycode = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Language} returns this
+ */
 proto.data.Language.prototype.setCountrycode = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -7370,9 +7865,12 @@ proto.data.Language.prototype.getIsbaselanguage = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.Language} returns this
+ */
 proto.data.Language.prototype.setIsbaselanguage = function(value) {
-  jspb.Message.setProto3BooleanField(this, 5, value);
+  return jspb.Message.setProto3BooleanField(this, 5, value);
 };
 
 
@@ -7385,9 +7883,12 @@ proto.data.Language.prototype.getIssystemlanguage = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.Language} returns this
+ */
 proto.data.Language.prototype.setIssystemlanguage = function(value) {
-  jspb.Message.setProto3BooleanField(this, 6, value);
+  return jspb.Message.setProto3BooleanField(this, 6, value);
 };
 
 
@@ -7400,9 +7901,12 @@ proto.data.Language.prototype.getIsdecimalpoint = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.Language} returns this
+ */
 proto.data.Language.prototype.setIsdecimalpoint = function(value) {
-  jspb.Message.setProto3BooleanField(this, 7, value);
+  return jspb.Message.setProto3BooleanField(this, 7, value);
 };
 
 
@@ -7415,9 +7919,12 @@ proto.data.Language.prototype.getDatepattern = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Language} returns this
+ */
 proto.data.Language.prototype.setDatepattern = function(value) {
-  jspb.Message.setProto3StringField(this, 8, value);
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
@@ -7430,9 +7937,12 @@ proto.data.Language.prototype.getTimepattern = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Language} returns this
+ */
 proto.data.Language.prototype.setTimepattern = function(value) {
-  jspb.Message.setProto3StringField(this, 9, value);
+  return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
