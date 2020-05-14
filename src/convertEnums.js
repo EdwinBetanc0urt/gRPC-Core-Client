@@ -111,7 +111,7 @@ const convertEnums = {
       key,
       value
     });
-  },
+  }
 };
 
 module.exports = convertEnums;

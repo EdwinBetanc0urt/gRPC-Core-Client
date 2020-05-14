@@ -24,6 +24,6 @@ const convertUtils = {
   ...convertCoreFunctionality,
   ...convertEnums,
   ...convertValues
-}
+};
 
-module.exports = convertUtils
+module.exports = convertUtils;
