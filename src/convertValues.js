@@ -108,10 +108,10 @@ const convertValues = {
   },
 
   /**
- * Get value from Integer
- * @param value
- * @return
- */
+   * Get value from Integer
+   * @param value
+   * @return
+   */
   getValueFromInteger(value) {
     const { Value } = require('./grpc/proto/base_data_type_pb.js');
     const { ValueType } = Value;

@@ -539,6 +539,7 @@ const convertBaseDataType = {
       reportType: undefined
     };
   }
+
 };
 
 module.exports = convertBaseDataType;

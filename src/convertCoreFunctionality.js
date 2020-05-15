@@ -39,7 +39,7 @@ const convertCoreFunctionality = {
         language: countryToConvert.getLanguage(),
         allowCitiesOutOfList: countryToConvert.getAllowcitiesoutoflist(),
         isPostcodeLookup: countryToConvert.getIspostcodelookup(),
-        currency: convertCoreFuncionality.convertCurrencyFromGRPC(
+        currency: convertCoreFunctionality.convertCurrencyFromGRPC(
           countryToConvert.getCurrency()
         )
       };
@@ -247,7 +247,7 @@ const convertCoreFunctionality = {
 
   convertProductFromGRPC(productToConvert) {
     if (productToConvert) {
-      const { convertDecimalValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType');
+      const { convertDecimalValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
 
       return {
         uuid: productToConvert.getUuid(),
@@ -329,7 +329,7 @@ const convertCoreFunctionality = {
   convertTaxRateFromGRPC(taxRateToConvert) {
     //  Tax rate
     if (taxRateToConvert) {
-      const { convertDecimalValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType');
+      const { convertDecimalValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
 
       return {
         name: taxRateToConvert.getName(),
@@ -350,16 +350,16 @@ const convertCoreFunctionality = {
 
   convertProductPriceFromGRPC(productPriceToConvert) {
     if (productPriceToConvert) {
-      const { convertDecimalValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType');
+      const { convertDecimalValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
 
       return {
-        currency: convertCoreFuncionality.convertCurrencyFromGRPC(
+        currency: convertCoreFunctionality.convertCurrencyFromGRPC(
           productPriceToConvert.getCurrency()
         ),
-        taxRate: convertCoreFuncionality.convertTaxRateFromGRPC(
+        taxRate: convertCoreFunctionality.convertTaxRateFromGRPC(
           productPriceToConvert.getTaxrate()
         ),
-        product: convertCoreFuncionality.convertProductFromGRPC(
+        product: convertCoreFunctionality.convertProductFromGRPC(
           productPriceToConvert.getProduct()
         ),
         priceList: convertDecimalValue(
@@ -429,6 +429,7 @@ const convertCoreFunctionality = {
       timePattern: undefined,
     };
   }
+
 };
 
 module.exports = convertCoreFunctionality;
