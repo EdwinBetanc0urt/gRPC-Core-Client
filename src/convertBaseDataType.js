@@ -70,14 +70,13 @@ const convertBaseDataType = {
    */
   getDecimalFromValue(value) {
     const { isEmptyValue } = require('./convertValues.js');
-    const decimalValue = value.getDecimalvalue();
 
-    if (isEmptyValue(decimalValue)) {
-      return undefined;
+    if (!isEmptyValue(value) && !isEmptyValue(value.getDecimalvalue())) {
+      // Convert it
+      return Number(value.getDecimalvalue());
     }
-    // Convert it
-    // return Number(decimalValue.getDecimalvalue());
-    return Number(decimalValue);
+
+    return undefined;
   },
 
   /**

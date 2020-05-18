@@ -215,7 +215,7 @@ const convertCoreFunctionality = {
         uuid: documentTypeToConvert.getUuid(),
         id: documentTypeToConvert.getId(),
         name: documentTypeToConvert.getName(),
-        printerName: documentTypeToConvert.getPrintername(),
+        printName: documentTypeToConvert.getPrintname(),
         description: documentTypeToConvert.getDescription()
       };
     }
@@ -223,7 +223,7 @@ const convertCoreFunctionality = {
       uuid: undefined,
       id: undefined,
       name: undefined,
-      printerName: undefined,
+      printName: undefined,
       description: undefined
     };
   },
@@ -247,7 +247,7 @@ const convertCoreFunctionality = {
 
   convertProductFromGRPC(productToConvert) {
     if (productToConvert) {
-      const { convertDecimalValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
+      const { getDecimalFromValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
 
       return {
         uuid: productToConvert.getUuid(),
@@ -267,21 +267,21 @@ const convertCoreFunctionality = {
         productGroupName: productToConvert.getProductgroupname(),
         productClassName: productToConvert.getProductclassname(),
         productClassificationName: productToConvert.getProductclassificationname(),
-        weight: convertDecimalValue(
+        weight: getDecimalFromValue(
           productToConvert.getWeight()
         ),
-        volume: convertDecimalValue(
+        volume: getDecimalFromValue(
           productToConvert.getVolume()
         ),
         upc: productToConvert.getUpc(),
         sku: productToConvert.getSku(),
         shelfWidth: productToConvert.getShelfwidth(),
-        shelfHeight: convertDecimalValue(
+        shelfHeight: getDecimalFromValue(
           productToConvert.getShelfheight()
         ),
         shelfDepth: productToConvert.getShelfdepth(),
         unitsPerPack: productToConvert.getUnitsperpack(),
-        unitsPerPallet: convertDecimalValue(
+        unitsPerPallet: getDecimalFromValue(
           productToConvert.getUnitsperpallet()
         ),
         guaranteeDays: productToConvert.getGuaranteedays(),
@@ -329,13 +329,13 @@ const convertCoreFunctionality = {
   convertTaxRateFromGRPC(taxRateToConvert) {
     //  Tax rate
     if (taxRateToConvert) {
-      const { convertDecimalValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
+      const { getDecimalFromValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
 
       return {
         name: taxRateToConvert.getName(),
         description: taxRateToConvert.getDescription(),
         taxIndicator: taxRateToConvert.getTaxindicator(),
-        rate: convertDecimalValue(
+        rate: getDecimalFromValue(
           taxRateToConvert.getRate()
         )
       };
@@ -350,7 +350,7 @@ const convertCoreFunctionality = {
 
   convertProductPriceFromGRPC(productPriceToConvert) {
     if (productPriceToConvert) {
-      const { convertDecimalValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
+      const { getDecimalFromValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
 
       return {
         currency: convertCoreFunctionality.convertCurrencyFromGRPC(
@@ -362,25 +362,25 @@ const convertCoreFunctionality = {
         product: convertCoreFunctionality.convertProductFromGRPC(
           productPriceToConvert.getProduct()
         ),
-        priceList: convertDecimalValue(
+        priceList: getDecimalFromValue(
           productPriceToConvert.getPricelist()
         ),
-        priceStd: convertDecimalValue(productPriceToConvert.getPricestd()),
-        priceLimit: convertDecimalValue(productPriceToConvert.getPricelimit()),
+        priceStd: getDecimalFromValue(productPriceToConvert.getPricestd()),
+        priceLimit: getDecimalFromValue(productPriceToConvert.getPricelimit()),
         priceListName: productPriceToConvert.getPricelistname(),
         isTaxIncluded: productPriceToConvert.getIstaxincluded(),
         validFrom: productPriceToConvert.getValidfrom(),
         pricePrecision: productPriceToConvert.getPriceprecision(),
-        quantityOnHand: convertDecimalValue(
+        quantityOnHand: getDecimalFromValue(
           productPriceToConvert.getQuantityonhand()
         ),
-        quantityReserved: convertDecimalValue(
+        quantityReserved: getDecimalFromValue(
           productPriceToConvert.getQuantityreserved()
         ),
-        quantityOrdered: convertDecimalValue(
+        quantityOrdered: getDecimalFromValue(
           productPriceToConvert.getQuantityordered()
         ),
-        quantityAvailable: convertDecimalValue(
+        quantityAvailable: getDecimalFromValue(
           productPriceToConvert.getQuantityavailable()
         )
       };
