@@ -63,7 +63,7 @@ class SystemCore {
   /**
    * Checks if value is empty. Deep-checks arrays and objects
    * Note: isEmpty([]) == true, isEmpty({}) == true, isEmpty([{0:false},"",0]) == true, isEmpty({0:1}) == false
-   * @param   {boolean|array|object|number|string|date|map|function} value
+   * @param   {boolean|array|object|number|string|date|map|set|function} value
    * @returns {boolean}
    */
   static isEmptyValue(value) {
@@ -75,11 +75,9 @@ class SystemCore {
    * Get Country Information
    * @param {string} countryUuid, Universally Unique IDentifier from country
    * @param {number} countryId, IDentifier from country
-   * @param {boolean} isConvert
-   * @param {string}  formatToConvert
-   * @return {object} Entity with records
+   * @return {object}
    */
-  requestGetCountry({ countryUuid, countryId, isConvert = true }) {
+  requestGetCountry({ countryUuid, countryId }) {
     const { GetCountryRequest } = require('./src/grpc/proto/core_functionality_pb.js');
     const request = new GetCountryRequest();
 
@@ -89,11 +87,9 @@ class SystemCore {
     //
     return this.getCoreFunctionalityService().getCountry(request)
       .then(countryResponse => {
-        if (isConvert) {
-          const { convertCountryFromGRPC } = require('./src/convertCoreFunctionality.js');
-          return convertCountryFromGRPC(countryResponse);
-        }
-        return countryResponse;
+        const { convertCountryFromGRPC } = require('./src/convertCoreFunctionality.js');
+
+        return convertCountryFromGRPC(countryResponse);
       });
   }
 
