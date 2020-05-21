@@ -29,6 +29,7 @@ const convertEnums = {
    * Get all values type or get key value type from value
    * @param {string} key
    * @param {number} value
+   * @returns {number|string|object}
       UNKNOWN = 0;
       INTEGER = 1;
       DECIMAL = 2;
@@ -51,6 +52,7 @@ const convertEnums = {
    * Get all operator or get key value type from value
    * @param {string} key
    * @param {number} value
+   * @returns {number|string|object}
       EQUAL = 0;
       NOT_EQUAL = 1;
       LIKE = 2;
@@ -98,6 +100,7 @@ const convertEnums = {
    * Get all event type or get key value type from value
    * @param {number} value
    * @param {string} key
+   * @returns {number|string|object}
       INSERT = 0;
       UPDATE = 1;
       DELETE = 2;

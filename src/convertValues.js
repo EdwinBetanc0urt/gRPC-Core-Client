@@ -22,13 +22,14 @@ const convertValues = {
    * @returns {boolean}
    */
   isEmptyValue(value) {
-    if (value === undefined || value == null || value === NaN) {
+    if (value === undefined || value == null || Number.isNaN(value)) {
       return true;
     } else if (String(value).trim() === '-1') {
       return true;
     } else if (typeof value === 'string') {
       return Boolean(!value.trim().length);
-    } else if (typeof value === 'function' || typeof value === 'number' || typeof value === 'boolean' || Object.prototype.toString.call(value) === '[object Date]') {
+    } else if (['boolean', 'function', 'number'].includes(typeof value) ||
+      Object.prototype.toString.call(value) === '[object Date]') {
       return false;
     } else if (['[object Map]', '[object Set]'].includes(Object.prototype.toString.call(value))) {
       return Boolean(!value.size);
