@@ -274,7 +274,7 @@ const convertValues = {
    * @param {string} returnType
    * @param {string} keyName, used in array pairs, default value is 'key'
    */
-  convertValuesMapFromGRPC({ mapToConvert, returnType = 'map', keyName = 'key' }) {
+  convertValuesMapFromGRPC({ mapToConvert, returnType = 'map', keyName = 'key', valueName = 'value'}) {
     let returnValues;
     const { convertValueFromGRPC } = require('./convertBaseDataType.js');
 
@@ -291,7 +291,7 @@ const convertValues = {
         mapToConvert.forEach((value, key) => {
           const item = {}
           item[keyName] = key;
-          item.value = convertValueFromGRPC(value);
+          item[valueName] = convertValueFromGRPC(value);
           returnValues.push(item);
         });
         break;

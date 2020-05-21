@@ -252,7 +252,7 @@ const convertBaseDataType = {
     };
   },
 
-  convertEntityFromGRPC({ entityToConvert, formatToConvert = 'object' }) {
+  convertEntityFromGRPC({ entityToConvert, formatToConvert = 'array' }) {
     if (entityToConvert) {
       const { convertValuesMapFromGRPC } = require('./convertValues.js');
 
@@ -262,7 +262,9 @@ const convertBaseDataType = {
         tableName: entityToConvert.getTablename(),
         values: convertValuesMapFromGRPC({
           mapToConvert: entityToConvert.getValuesMap(),
-          returnType: formatToConvert
+          returnType: formatToConvert,
+          keyName: 'columnName',
+          valueName: 'value'
         })
       };
     }
