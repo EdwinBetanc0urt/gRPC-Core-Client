@@ -23,36 +23,32 @@ const convertBaseDataType = {
   convertValueFromGRPC(value) {
     const { Value } = require('./grpc/proto/base_data_type_pb.js');
     const { ValueType } = Value;
+    const { isEmptyValue } = require('./convertValues.js');
 
-    if (value === undefined || value === null || value.getValuetype() === ValueType.UNKNOWN) {
+    if (isEmptyValue(value)) {
       return undefined;
     }
 
     let returnValue;
     switch (value.getValuetype()) {
       case ValueType.INTEGER:
-        // const { getIntegerFromValue } = require('./convertValues.js');
-        returnValue = convertBaseDataType.getIntegerFromValue(value);
+        returnValue = convertBaseDataType.getIntegerFromGRPC(value);
         break;
       // data type Number (float)
       case ValueType.DECIMAL:
-        // const { getDecimalFromValue } = require('./convertValues.js');
-        returnValue = convertBaseDataType.getDecimalFromValue(value);
+        returnValue = convertBaseDataType.getDecimalFromGRPC(value);
         break;
       // data type Boolean
       case ValueType.BOOLEAN:
-        // const { getBooleanFromValue } = require('./convertValues.js');
-        returnValue = convertBaseDataType.getBooleanFromValue(value);
+        returnValue = convertBaseDataType.getBooleanFromGRPC(value);
         break;
       // data type String
       case ValueType.STRING:
-        // const { getStringFromValue } = require('./convertValues.js');
-        returnValue = convertBaseDataType.getStringFromValue(value);
+        returnValue = convertBaseDataType.getStringFromGRPC(value);
         break;
       // data type Date
       case ValueType.DATE:
-        // const { getDateFromValue } = require('./convertValues.js');
-        returnValue = convertBaseDataType.getDateFromValue(value);
+        returnValue = convertBaseDataType.getDateFromGRPC(value);
         break;
       // empty value
       default:
@@ -68,7 +64,7 @@ const convertBaseDataType = {
    * @param value
    * @return
    */
-  getDecimalFromValue(value) {
+  getDecimalFromGRPC(value) {
     const { isEmptyValue } = require('./convertValues.js');
 
     if (!isEmptyValue(value) && !isEmptyValue(value.getDecimalvalue())) {
@@ -80,29 +76,26 @@ const convertBaseDataType = {
   },
 
   /**
-   * Get Date from a value
+   * Get Date from a grpc value
    * @param value value to convert
    * @return
    */
-  getDateFromValue(value) {
+  getDateFromGRPC(value) {
     const { isEmptyValue } = require('./convertValues.js');
 
-    if (isEmptyValue(value) || value.getLongvalue() === 0) {
-      return undefined;
-    }
-    if (value.getLongvalue() > 0) {
+    if (!isEmptyValue(value) && value.getLongvalue() > 0) {
       return new Date(value.getLongvalue());
     }
     return undefined;
   },
 
   /**
-   * Get String from a value
+   * Get String from a grpc value
    * @param value
    * @param uppercase
    * @return
    */
-  getStringFromValue(value, uppercase = false) {
+  getStringFromGRPC(value, uppercase = false) {
     const { isEmptyValue } = require('./convertValues.js');
 
     if (isEmptyValue(value)) {
@@ -110,7 +103,7 @@ const convertBaseDataType = {
     }
 
     let stringValue = value.getStringvalue();
-    //	To Upper case
+    // To Upper case
     if (uppercase) {
       stringValue = stringValue.toUpperCase();
     }
@@ -118,11 +111,11 @@ const convertBaseDataType = {
   },
 
   /**
-   * Get integer from a value
+   * Get integer from a grpc value
    * @param value
    * @return
    */
-  getIntegerFromValue(value) {
+  getIntegerFromGRPC(value) {
     const { isEmptyValue } = require('./convertValues.js');
 
     if (isEmptyValue(value)) {
@@ -132,11 +125,11 @@ const convertBaseDataType = {
   },
 
   /**
-   * Get Boolean from a value
+   * Get Boolean from a grpc value
    * @param value
    * @return
    */
-  getBooleanFromValue(value) {
+  getBooleanFromGRPC(value) {
     const { isEmptyValue } = require('./convertValues.js');
 
     if (isEmptyValue(value)) {
@@ -170,22 +163,13 @@ const convertBaseDataType = {
         limit: criteriaToConvert.getLimit()
       };
     }
-    return {
-      tableName: undefined,
-      query: undefined,
-      whereClause: undefined,
-      orderByClause: undefined,
-      referenceUuid: undefined,
-      conditionsList: undefined,
-      valuesList: undefined,
-      orderByColumnList: undefined,
-      limit: undefined
-    }
+    return undefined;
   },
 
   convertOrderByPropertyFromGRPC(orderByPropertyToConvert) {
     if (orderByPropertyToConvert) {
       const { getOrderByProperty_OrderType } = require('./convertEnums.js');
+
       return {
         columnName: orderByPropertyToConvert.getColumnname(),
         orderType: orderByPropertyToConvert.getOrdertype(),
@@ -194,11 +178,7 @@ const convertBaseDataType = {
         })
       };
     }
-    return {
-      columnName: undefined,
-      orderType: undefined,
-      orderTypeName: undefined
-    };
+    return undefined;
   },
 
   convertRecordReferenceInfoFromGRPC(recordReferenceInfoToConvert) {
@@ -212,14 +192,7 @@ const convertBaseDataType = {
         recordCount: recordReferenceInfoToConvert.getRecordcount()
       };
     }
-    return {
-      uuid: undefined,
-      windowUuid: undefined,
-      displayName: undefined,
-      tableName: undefined,
-      whereClause: undefined,
-      recordCount: undefined,
-    };
+    return undefined;
   },
 
   convertDocumentStatusFromGRPC(documentStatusToConvert) {
@@ -230,11 +203,7 @@ const convertBaseDataType = {
         description: documentStatusToConvert.getDescription()
       };
     }
-    return {
-      value: undefined,
-      name: undefined,
-      description: undefined
-    };
+    return undefined;
   },
 
   convertDocumentActionFromGRPC(documentActionToConvert) {
@@ -245,11 +214,7 @@ const convertBaseDataType = {
         description: documentActionToConvert.getDescription()
       };
     }
-    return {
-      value: undefined,
-      name: undefined,
-      description: undefined
-    };
+    return undefined;
   },
 
   convertEntityFromGRPC({ entityToConvert, formatToConvert = 'array' }) {
@@ -268,12 +233,7 @@ const convertBaseDataType = {
         })
       };
     }
-    return {
-      id: undefined,
-      uuid: undefined,
-      tableName: undefined,
-      values: undefined
-    };
+    return undefined;
   },
 
   convertProcessLogFromGRPC(processLogToConvert) {
@@ -302,18 +262,7 @@ const convertBaseDataType = {
         )
       };
     }
-    return {
-      uuid: undefined,
-      instanceUuid: undefined,
-      isError: undefined,
-      summary: undefined,
-      resultTableName: undefined,
-      isProcessing: undefined,
-      lastRun: undefined,
-      logsList: undefined,
-      parametersList: undefined,
-      output: undefined
-    };
+    return undefined;
   },
 
   convertProcessInfoLogFromGRPC(processInfoLogToConvert) {
@@ -323,10 +272,7 @@ const convertBaseDataType = {
         log: processInfoLogToConvert.getLog()
       };
     }
-    return {
-      recordId: undefined,
-      log: undefined
-    };
+    return undefined;
   },
 
   convertTranslationFromGRPC(translationToConvert) {
@@ -342,11 +288,7 @@ const convertBaseDataType = {
         })
       };
     }
-    return {
-      language: undefined,
-      translationUuid: undefined,
-      values: undefined
-    };
+    return undefined;
   },
 
   convertDashboardFromGRPC(dashboardToConvert) {
@@ -365,19 +307,7 @@ const convertBaseDataType = {
         fileName: dashboardToConvert.getFilename()
       };
     }
-    return {
-      windowUuid: undefined,
-      browserUuid: undefined,
-      dashboardName: undefined,
-      dashboardDescription: undefined,
-      dashboardHtml: undefined,
-      columnNo: undefined,
-      lineNo: undefined,
-      isCollapsible: undefined,
-      isOpenByDefault: undefined,
-      isEventRequired: undefined,
-      fileName: undefined,
-    }
+    return undefined;
   },
 
   convertPrintFromatFromGRPC(printFromatToConvert) {
@@ -391,14 +321,7 @@ const convertBaseDataType = {
         reportViewUuid: printFromatToConvert.getReportviewuuid()
       };
     }
-    return {
-      printFormatUuid: undefined,
-      name: undefined,
-      description: undefined,
-      tableName: undefined,
-      isDefault: undefined,
-      reportViewUuid: undefined
-    };
+    return undefined;
   },
 
   convertRecordLogFromGRPC(recordLogToConvert) {
@@ -425,24 +348,7 @@ const convertBaseDataType = {
         })
       };
     }
-    return {
-      logUuid: undefined,
-      recordId: undefined,
-      tableName: undefined,
-      columnName: undefined,
-      displayColumnName: undefined,
-      sessionUuid: undefined,
-      userUuid: undefined,
-      userName: undefined,
-      transactionName: undefined,
-      oldValue: undefined,
-      oldDisplayValue: undefined,
-      newValue: undefined,
-      newDisplayValue: undefined,
-      description: undefined,
-      eventType: undefined,
-      logDate: undefined
-    };
+    return undefined;
   },
 
   convertChangeLogFromGRPC(changeLogToConvert) {
@@ -457,15 +363,7 @@ const convertBaseDataType = {
         description: changeLogToConvert.getDescription()
       };
     }
-    return {
-      columnName: undefined,
-      displayColumnName: undefined,
-      oldValue: undefined,
-      newValue: undefined,
-      oldDisplayValue: undefined,
-      newDisplayValue: undefined,
-      description: undefined
-    };
+    return undefined;
   },
 
   convertReportViewFromGRPC(reportViewToConvert) {
@@ -477,12 +375,7 @@ const convertBaseDataType = {
         tableName: reportViewToConvert.getTablename()
       };
     }
-    return {
-      reportViewUuid: undefined,
-      name: undefined,
-      description: undefined,
-      tableName: undefined
-    };
+    return undefined;
   },
 
   convertDrillTableFromGRPC(drillTableToConvert) {
@@ -492,10 +385,7 @@ const convertBaseDataType = {
         printName: drillTableToConvert.getPrintname()
       };
     }
-    return {
-      tableName: undefined,
-      printName: undefined
-    };
+    return undefined;
   },
 
   convertReportOutputFromGRPC(reportOutputToConvert) {
@@ -520,25 +410,7 @@ const convertBaseDataType = {
         reportType: reportOutputToConvert.getReporttype()
       };
     }
-    return {
-      uuid: undefined,
-      name: undefined,
-      description: undefined,
-      fileName: undefined,
-      output: undefined,
-      mimeType: undefined,
-      dataCols: undefined,
-      dataRows: undefined,
-      headerName: undefined,
-      footerName: undefined,
-      printFormatUuid: undefined,
-      reportViewUuid: undefined,
-      tableName: undefined,
-      outputStream: undefined,
-      outputStream_asB64: undefined,
-      outputStream_asU8: undefined,
-      reportType: undefined
-    };
+    return undefined;
   }
 
 };

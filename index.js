@@ -93,8 +93,14 @@ class SystemCore {
       });
   }
 
-  // Request Organization list
-  requestListOrganizations({ roleUuid, roleId, pageToken, pageSize, isConvert = true }) {
+  /**
+   * Request Organization list
+   * @param {string} roleUuid
+   * @param {number} roleId
+   * @param {string} pageToken
+   * @param {number} pageSize
+   */
+  requestListOrganizations({ roleUuid, roleId, pageToken, pageSize }) {
     const { ListOrganizationsRequest } = require('./src/grpc/proto/core_functionality_pb.js');
 
     const request = new ListOrganizationsRequest();
@@ -106,23 +112,26 @@ class SystemCore {
 
     return this.getCoreFunctionalityService().listOrganizations(request)
       .then(organizationsListResponse => {
-        if (isConvert) {
-          const { convertOrganizationFromGRPC } = require('./src/convertCoreFunctionality.js');
+        const { convertOrganizationFromGRPC } = require('./src/convertCoreFunctionality.js');
 
-          return {
-            recordCount: organizationsListResponse.getRecordcount(),
-            organizationsList: organizationsListResponse.getOrganizationsList().map(organization => {
-              return convertOrganizationFromGRPC(organization);
-            }),
-            nextPageToken: organizationsListResponse.getNextPageToken(),
-          };
-        }
-        return organizationsListResponse;
+        return {
+          recordCount: organizationsListResponse.getRecordcount(),
+          organizationsList: organizationsListResponse.getOrganizationsList().map(organization => {
+            return convertOrganizationFromGRPC(organization);
+          }),
+          nextPageToken: organizationsListResponse.getNextPageToken(),
+        };
       });
   }
 
-  // Request Warehouse list
-  requestListWarehouses({ organizationUuid, organizationId, pageToken, pageSize, isConvert = true }) {
+  /**
+   * Request Warehouse list
+   * @param {string} organizationUuid
+   * @param {number} organizationId
+   * @param {string} pageToken
+   * @param {number} pageSize
+   */
+  requestListWarehouses({ organizationUuid, organizationId, pageToken, pageSize }) {
     const { ListWarehousesRequest } = require('./src/grpc/proto/core_functionality_pb.js');
 
     const request = new ListWarehousesRequest();
@@ -134,18 +143,15 @@ class SystemCore {
 
     return this.getCoreFunctionalityService().listWarehouses(request)
       .then(warehousesListResponse => {
-        if (isConvert) {
-          const { convertWarehouseFromGRPC } = require('./src/convertCoreFunctionality.js');
+        const { convertWarehouseFromGRPC } = require('./src/convertCoreFunctionality.js');
 
-          return {
-            recordCount: warehousesListResponse.getRecordcount(),
-            warehousesList: warehousesListResponse.getWarehousesList().map(warehouse => {
-              return convertWarehouseFromGRPC(warehouse);
-            }),
-            nextPageToken: warehousesListResponse.getNextPageToken(),
-          };
-        }
-        return warehousesListResponse;
+        return {
+          recordCount: warehousesListResponse.getRecordcount(),
+          warehousesList: warehousesListResponse.getWarehousesList().map(warehouse => {
+            return convertWarehouseFromGRPC(warehouse);
+          }),
+          nextPageToken: warehousesListResponse.getNextPageToken(),
+        };
       });
   }
 
@@ -154,7 +160,7 @@ class SystemCore {
    * @param {string}  pageToken
    * @param {string}  pageSize
    */
-  requestListLanguages({ pageToken, pageSize, isConvert = true }) {
+  requestListLanguages({ pageToken, pageSize }) {
     const { ListLanguagesRequest } = require('./src/grpc/proto/core_functionality_pb.js');
     const request = new ListLanguagesRequest();
 
@@ -164,18 +170,15 @@ class SystemCore {
 
     return this.getCoreFunctionalityService().listLanguages(request)
       .then(languageResponse => {
-        if (isConvert) {
-          const { convertLanguageFromGRPC } = require('./src/convertCoreFunctionality.js');
+        const { convertLanguageFromGRPC } = require('./src/convertCoreFunctionality.js');
 
-          return {
-            recordCount: languageResponse.getRecordcount(),
-            languagesList: languageResponse.getLanguagesList().map(languageItem => {
-              return convertLanguageFromGRPC(languageItem);
-            }),
-            nextPageToken: languageResponse.getNextPageToken()
-          };
-        }
-        return languageResponse;
+        return {
+          recordCount: languageResponse.getRecordcount(),
+          languagesList: languageResponse.getLanguagesList().map(languageItem => {
+            return convertLanguageFromGRPC(languageItem);
+          }),
+          nextPageToken: languageResponse.getNextPageToken()
+        };
       });
   }
 }

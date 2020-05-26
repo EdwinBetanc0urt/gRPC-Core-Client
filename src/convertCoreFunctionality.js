@@ -44,30 +44,7 @@ const convertCoreFunctionality = {
         )
       };
     }
-    return {
-      id: undefined,
-      uuid: undefined,
-      countryCode: undefined,
-      name: undefined,
-      description: undefined,
-      hasRegion: undefined,
-      regionName: undefined,
-      displaySequence: undefined,
-      isAddressLinesReverse: undefined,
-      captureSequence: undefined,
-      displaySequenceLocal: undefined,
-      isAddressLinesLocalReverse: undefined,
-      expressionPostal: undefined,
-      hasPostalAdd: undefined,
-      expressionPhone: undefined,
-      mediaSize: undefined,
-      expressionBankRoutingNo: undefined,
-      expressionBankAccountNo: undefined,
-      language: undefined,
-      allowCitiesOutOfList: undefined,
-      isPostcodeLookup: undefined,
-      currency: undefined
-    };
+    return undefined;
   },
 
   convertCurrencyFromGRPC(currencyToConvert) {
@@ -82,15 +59,7 @@ const convertCoreFunctionality = {
         costingPrecision: currencyToConvert.getCostingprecision()
       };
     }
-    return {
-      currencyId: undefined,
-      currencyUuid: undefined,
-      iSOCode: undefined,
-      curSymbol: undefined,
-      description: undefined,
-      stdPrecision: undefined,
-      costingPrecision: undefined
-    };
+    return undefined;
   },
 
   convertOrganizationFromGRPC(organizationToConvert) {
@@ -108,18 +77,7 @@ const convertCoreFunctionality = {
         fax: organizationToConvert.getFax()
       };
     }
-    return {
-      id: undefined,
-      uuid: undefined,
-      name: undefined,
-      description: undefined,
-      isReadOnly: undefined,
-      duns: undefined,
-      taxId: undefined,
-      phone: undefined,
-      phone2: undefined,
-      fax: undefined
-    };
+    return undefined;
   },
 
   convertWarehouseFromGRPC(warehouseToConvert) {
@@ -131,12 +89,7 @@ const convertCoreFunctionality = {
         description: warehouseToConvert.getDescription()
       };
     }
-    return {
-      id: undefined,
-      uuid: undefined,
-      name: undefined,
-      description: undefined
-    };
+    return undefined;
   },
 
   convertUnitOfMeasureFromGRPC(unitOfMeasureToConvert) {
@@ -152,16 +105,7 @@ const convertCoreFunctionality = {
         costingPrecision: unitOfMeasureToConvert.getCostingprecision()
       };
     }
-    return {
-      uuid: undefined,
-      id: undefined,
-      code: undefined,
-      symbol: undefined,
-      name: undefined,
-      description: undefined,
-      stdPrecision: undefined,
-      costingPrecision: undefined
-    };
+    return undefined;
   },
 
   convertChargeFromGRPC(chargeToConvert) {
@@ -173,12 +117,7 @@ const convertCoreFunctionality = {
         description: chargeToConvert.getDescription()
       };
     }
-    return {
-      uuid: undefined,
-      id: undefined,
-      name: undefined,
-      description: undefined
-    };
+    return undefined;
   },
 
   // Business Partner
@@ -196,17 +135,7 @@ const convertCoreFunctionality = {
         description: businessPartnerToConvert.getDescription()
       };
     }
-    return {
-      uuid: undefined,
-      id: undefined,
-      value: undefined,
-      taxId: undefined,
-      duns: undefined,
-      naics: undefined,
-      name: undefined,
-      lastName: undefined,
-      description: undefined
-    };
+    return undefined;
   },
 
   convertDocumentTypeFromGRPC(documentTypeToConvert) {
@@ -219,13 +148,7 @@ const convertCoreFunctionality = {
         description: documentTypeToConvert.getDescription()
       };
     }
-    return {
-      uuid: undefined,
-      id: undefined,
-      name: undefined,
-      printName: undefined,
-      description: undefined
-    };
+    return undefined;
   },
 
   convertSalesRepresentativeFromGRPC(salesRepresentativeToConvert) {
@@ -235,19 +158,14 @@ const convertCoreFunctionality = {
         id: salesRepresentativeToConvert.getId(),
         name: salesRepresentativeToConvert.getName(),
         description: salesRepresentativeToConvert.getDescription()
-      }
+      };
     }
-    return {
-      uuid: undefined,
-      id: undefined,
-      name: undefined,
-      description: undefined
-    }
+    return undefined;
   },
 
   convertProductFromGRPC(productToConvert) {
     if (productToConvert) {
-      const { getDecimalFromValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
+      const { getDecimalFromGRPC } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
 
       return {
         uuid: productToConvert.getUuid(),
@@ -267,21 +185,21 @@ const convertCoreFunctionality = {
         productGroupName: productToConvert.getProductgroupname(),
         productClassName: productToConvert.getProductclassname(),
         productClassificationName: productToConvert.getProductclassificationname(),
-        weight: getDecimalFromValue(
+        weight: getDecimalFromGRPC(
           productToConvert.getWeight()
         ),
-        volume: getDecimalFromValue(
+        volume: getDecimalFromGRPC(
           productToConvert.getVolume()
         ),
         upc: productToConvert.getUpc(),
         sku: productToConvert.getSku(),
         shelfWidth: productToConvert.getShelfwidth(),
-        shelfHeight: getDecimalFromValue(
+        shelfHeight: getDecimalFromGRPC(
           productToConvert.getShelfheight()
         ),
         shelfDepth: productToConvert.getShelfdepth(),
         unitsPerPack: productToConvert.getUnitsperpack(),
-        unitsPerPallet: getDecimalFromValue(
+        unitsPerPallet: getDecimalFromGRPC(
           productToConvert.getUnitsperpallet()
         ),
         guaranteeDays: productToConvert.getGuaranteedays(),
@@ -291,66 +209,29 @@ const convertCoreFunctionality = {
         description: productToConvert.getDescription()
       };
     }
-    return {
-      uuid: undefined,
-      id: undefined,
-      value: undefined,
-      name: undefined,
-      help: undefined,
-      documentNote: undefined,
-      uomName: undefined,
-      productType: undefined,
-      isStocked: undefined,
-      isDropShip: undefined,
-      isPurchased: undefined,
-      isSold: undefined,
-      imageURL: undefined,
-      productCategoryName: undefined,
-      productGroupName: undefined,
-      productClassName: undefined,
-      productClassificationName: undefined,
-      weight: undefined,
-      volume: undefined,
-      upc: undefined,
-      sku: undefined,
-      shelfWidth: undefined,
-      shelfHeight: undefined,
-      shelfDepth: undefined,
-      unitsPerPack: undefined,
-      unitsPerPallet: undefined,
-      guaranteeDays: undefined,
-      descriptionURL: undefined,
-      versionNo: undefined,
-      taxCategory: undefined,
-      description: undefined
-    };
+    return undefined;
   },
 
   convertTaxRateFromGRPC(taxRateToConvert) {
     //  Tax rate
     if (taxRateToConvert) {
-      const { getDecimalFromValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
+      const { getDecimalFromGRPC } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
 
       return {
         name: taxRateToConvert.getName(),
         description: taxRateToConvert.getDescription(),
         taxIndicator: taxRateToConvert.getTaxindicator(),
-        rate: getDecimalFromValue(
+        rate: getDecimalFromGRPC(
           taxRateToConvert.getRate()
         )
       };
     }
-    return {
-      name: undefined,
-      description: undefined,
-      taxIndicator: undefined,
-      rate: undefined
-    };
+    return undefined;
   },
 
   convertProductPriceFromGRPC(productPriceToConvert) {
     if (productPriceToConvert) {
-      const { getDecimalFromValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
+      const { getDecimalFromGRPC } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
 
       return {
         currency: convertCoreFunctionality.convertCurrencyFromGRPC(
@@ -362,45 +243,30 @@ const convertCoreFunctionality = {
         product: convertCoreFunctionality.convertProductFromGRPC(
           productPriceToConvert.getProduct()
         ),
-        priceList: getDecimalFromValue(
+        priceList: getDecimalFromGRPC(
           productPriceToConvert.getPricelist()
         ),
-        priceStd: getDecimalFromValue(productPriceToConvert.getPricestd()),
-        priceLimit: getDecimalFromValue(productPriceToConvert.getPricelimit()),
+        priceStd: getDecimalFromGRPC(productPriceToConvert.getPricestd()),
+        priceLimit: getDecimalFromGRPC(productPriceToConvert.getPricelimit()),
         priceListName: productPriceToConvert.getPricelistname(),
         isTaxIncluded: productPriceToConvert.getIstaxincluded(),
         validFrom: productPriceToConvert.getValidfrom(),
         pricePrecision: productPriceToConvert.getPriceprecision(),
-        quantityOnHand: getDecimalFromValue(
+        quantityOnHand: getDecimalFromGRPC(
           productPriceToConvert.getQuantityonhand()
         ),
-        quantityReserved: getDecimalFromValue(
+        quantityReserved: getDecimalFromGRPC(
           productPriceToConvert.getQuantityreserved()
         ),
-        quantityOrdered: getDecimalFromValue(
+        quantityOrdered: getDecimalFromGRPC(
           productPriceToConvert.getQuantityordered()
         ),
-        quantityAvailable: getDecimalFromValue(
+        quantityAvailable: getDecimalFromGRPC(
           productPriceToConvert.getQuantityavailable()
         )
       };
     }
-    return {
-      product: undefined,
-      currency: undefined,
-      taxRate: undefined,
-      priceList: undefined,
-      priceStd: undefined,
-      priceLimit: undefined,
-      priceListName: undefined,
-      isTaxIncluded: undefined,
-      validFrom: undefined,
-      pricePrecision: undefined,
-      quantityOnHand: undefined,
-      quantityReserved: undefined,
-      quantityOrdered: undefined,
-      quantityAvailable: undefined
-    };
+    return undefined;
   },
 
   convertLanguageFromGRPC(languageToConvert) {
@@ -417,17 +283,7 @@ const convertCoreFunctionality = {
         timePattern: languageToConvert.getTimepattern()
       };
     }
-    return {
-      language: undefined,
-      languageName: undefined,
-      languageISO: undefined,
-      countryCode: undefined,
-      isBaseLanguage: undefined,
-      isSystemLanguage: undefined,
-      isDecimalPoint: undefined,
-      datePattern: undefined,
-      timePattern: undefined,
-    };
+    return undefined;
   }
 
 };

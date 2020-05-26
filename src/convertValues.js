@@ -109,7 +109,7 @@ const convertValues = {
   },
 
   /**
-   * Get value from Integer
+   * Get value from Integer to grpc
    * @param value
    * @return
    */
@@ -130,7 +130,7 @@ const convertValues = {
   },
 
   /**
-   * Get value from a string
+   * Get value from a string to grpc
    * @param value
    * @return
    */
@@ -147,7 +147,7 @@ const convertValues = {
   },
 
   /**
-   * Get value from a boolean value
+   * Get value from a boolean value to grpc
    * @param value
    * @return
    */
@@ -169,7 +169,7 @@ const convertValues = {
   },
 
   /**
-   * Get value from a date
+   * Get value from a date to grpc
    * @param value
    * @return
    */
@@ -188,7 +188,7 @@ const convertValues = {
   },
 
   /**
-   * Get value from big decimal
+   * Get value from big decimal to grpc
    * @param value
    * @return
    */
@@ -196,35 +196,23 @@ const convertValues = {
     const { Value } = require('./grpc/proto/base_data_type_pb.js');
     const { ValueType } = Value;
     const convertedValue = new Value();
-    const convertedDecimalValue = convertValues.getDecimalInstance();
 
     convertedValue.setValuetype(ValueType.DECIMAL);
-    if (!convertValues.isEmptyValue(value)) {
-      if (Number.isInteger(value)) {
-        value = value.toFixed(2);
-      }
-      convertedDecimalValue.setDecimalvalue(value.toString());
-
-      //  Set scale
-      let scale = value.toString().indexOf('.');
-      if (scale == -1) {
-        scale = 0;
-      } else {
-        scale = value.toString().length - scale - 1;
-      }
-      convertedDecimalValue.setScale(scale);
-    }
-    convertedValue.setDecimalvalue(convertedDecimalValue);
+    convertedValue.setDecimalvalue(
+      getDecimalFromNumber(value)
+    );
     return convertedValue;
   },
 
   /**
-   * Get value from big decimal
+   * Get value from big decimal to grpc
    * @param value
    * @return
    */
   getDecimalFromNumber(numberValue) {
-    const convertedDecimalValue = convertValues.getDecimalInstance();
+    const { Decimal } = require('./grpc/proto/base_data_type_pb.js');
+    const convertedDecimalValue = new Decimal();
+
     if (!convertValues.isEmptyValue(numberValue)) {
       if (Number.isInteger(numberValue)) {
         numberValue = numberValue.toFixed(2);
@@ -241,11 +229,6 @@ const convertValues = {
       convertedDecimalValue.setScale(scale);
     }
     return convertedDecimalValue;
-  },
-
-  getDecimalInstance() {
-    const { Decimal } = require('./grpc/proto/base_data_type_pb.js');
-    return new Decimal();
   },
 
   /**
@@ -387,7 +370,7 @@ const convertValues = {
    * @return {Criteria} instance
    * TODO: Add support to orderByColumnsList
    */
-  convertCriteriaToGRPC({ tableName, query, whereClause, referenceUuid, conditionsList = [], orderByClause, valuesList = [], orderByColumnList = [], limit }) {
+  convertCriteriaToGRPC({ tableName, query, whereClause, referenceUuid, conditionsList = [], orderByClause, valuesList = [], orderByColumnsList = [], limit }) {
     const { Criteria } = require('./grpc/proto/base_data_type_pb.js');
     const criteria = new Criteria();
 
