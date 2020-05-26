@@ -218,6 +218,31 @@ const convertValues = {
     return convertedValue;
   },
 
+  /**
+   * Get value from big decimal
+   * @param value
+   * @return
+   */
+  getDecimalFromNumber(numberValue) {
+    const convertedDecimalValue = convertValues.getDecimalInstance();
+    if (!convertValues.isEmptyValue(numberValue)) {
+      if (Number.isInteger(numberValue)) {
+        numberValue = numberValue.toFixed(2);
+      }
+      convertedDecimalValue.setDecimalvalue(numberValue.toString());
+
+      //  Set scale
+      let scale = numberValue.toString().indexOf('.');
+      if (scale == -1) {
+        scale = 0;
+      } else {
+        scale = numberValue.toString().length - scale - 1;
+      }
+      convertedDecimalValue.setScale(scale);
+    }
+    return convertedDecimalValue;
+  },
+
   getDecimalInstance() {
     const { Decimal } = require('./grpc/proto/base_data_type_pb.js');
     return new Decimal();
