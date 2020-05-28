@@ -55,7 +55,7 @@ const convertValues = {
     }
 
     // evaluate type of value
-    if (value === undefined || value === null) {
+    if (convertValues.isEmptyValue(value)) {
       return convertValues.getValueFromString(value);
     }
     if (typeof (value) === 'number') {
@@ -109,7 +109,7 @@ const convertValues = {
   },
 
   /**
-   * Get value from Integer to grpc
+   * Get value from integer to grpc
    * @param value
    * @return
    */
@@ -199,13 +199,13 @@ const convertValues = {
 
     convertedValue.setValuetype(ValueType.DECIMAL);
     convertedValue.setDecimalvalue(
-      getDecimalFromNumber(value)
+      convertValues.getDecimalFromNumber(value)
     );
     return convertedValue;
   },
 
   /**
-   * Get value from big decimal to grpc
+   * Get big decimal from number to grpc
    * @param value
    * @return
    */
@@ -234,6 +234,7 @@ const convertValues = {
   /**
    * Convert a parameter defined by columnName and value to Value Object
    * @param {string} columnName
+   * @param {string}  valueType
    * @param {mixed}  value
    * @returns KeyValue Object
    */
@@ -255,8 +256,8 @@ const convertValues = {
   /**
    * Convert a list of parameter defined by columnName and value to Value Object
    * @param {number} selectionId keyColumn Value
-   * @param {string} selectionUuid TODO: Add support to uuid record
-   * @param {array}  selectionValues [{ columName, value }]
+   * @param {string} selectionUuid // TODO: Add support to uuid record
+   * @param {array}  selectionValues [{ columName: String, value: Mixed }]
    * Return a list of KeyValue Object
    */
   convertSelectionToGRPC({ selectionId, selectionUuid, selectionValues = [] }) {
@@ -279,8 +280,9 @@ const convertValues = {
   /**
    * Convert values map to compatible format
    * @param {map} mapToConvert
-   * @param {string} returnType
+   * @param {string} returnType 'map', 'object', 'array'
    * @param {string} keyName, used in array pairs, default value is 'key'
+   * @param {string} valueName, used in array pairs, default value is 'value'
    */
   convertValuesMapFromGRPC({ mapToConvert, returnType = 'map', keyName = 'key', valueName = 'value'}) {
     let returnValues;
@@ -338,20 +340,24 @@ const convertValues = {
     }
 
     // set value and value to
-    if (value !== undefined && value !== null) {
+    if (!convertValues.isEmptyValue(value)) {
       conditionInstance.setValue(
         convertValues.convertValueToGRPC({ value })
       );
     }
-    if (valueTo !== undefined && valueTo !== null) {
+    if (!convertValues.isEmptyValue(valueTo)) {
       conditionInstance.setValueto(
-        convertValues.convertValueToGRPC({ value: valueTo })
+        convertValues.convertValueToGRPC({
+          value: valueTo
+        })
       );
     }
     // set values
     if (values && values.length) {
       values.forEach(itemValue => {
-        const convertedValue = convertValues.convertValueToGRPC({ value: itemValue });
+        const convertedValue = convertValues.convertValueToGRPC({
+          value: itemValue
+        });
         conditionInstance.addValues(convertedValue);
       });
     }
@@ -361,16 +367,48 @@ const convertValues = {
   },
 
   /**
+   * Get order by property converted to gRPC
+   * @param {string} columnName
+   * @param {string} orderType 'ASCENDING' or 'DESCENDING'
+   */
+  convertOrderByPropertyToGRPC({ columnName, orderType }) {
+    const { OrderByProperty } = require('./grpc/proto/base_data_type_pb.js');
+    const { OrderType } = OrderByProperty;
+    const orderByInstance = new OrderByProperty;
+
+    orderByInstance.setColumnname(columnName);
+    // set order type, default is 0
+    orderByInstance.setOrdertype(OrderType.ASCENDING);
+    if (orderType) {
+      orderByInstance.setOrdertype(OrderType[orderType]);
+    }
+    return orderByInstance;
+  },
+
+  /**
    * Get Criteria from Table Name
    * @param {string} tableName
    * @param {string} query
    * @param {string} whereClause
-   * @param {array}  conditionsList
+   * @param {string} referenceUuid
+   * @param {array}  conditionsList [{ columnName: String, value: Mixed, valueTo: Mixed, values: Array, operator: String}]
+   * @param {array}  valuesList mixed values
+   * @param {array}  orderByColumnsList [{ columnName: String, orderType: Number }]
    * @param {string} orderByClause
+   * @param {number} limit
    * @return {Criteria} instance
-   * TODO: Add support to orderByColumnsList
    */
-  convertCriteriaToGRPC({ tableName, query, whereClause, referenceUuid, conditionsList = [], orderByClause, valuesList = [], orderByColumnsList = [], limit }) {
+  convertCriteriaToGRPC({
+    tableName,
+    query,
+    whereClause,
+    referenceUuid,
+    conditionsList = [],
+    orderByClause,
+    valuesList = [],
+    orderByColumnsList = [],
+    limit
+  }) {
     const { Criteria } = require('./grpc/proto/base_data_type_pb.js');
     const criteria = new Criteria();
 
@@ -382,7 +420,9 @@ const convertValues = {
     // add values
     if (valuesList && valuesList.length) {
       valuesList.forEach(itemValue => {
-        const value = convertValues.convertValueToGRPC({ value: itemValue });
+        const value = convertValues.convertValueToGRPC({
+          value: itemValue
+        });
         criteria.addValues(value);
       });
     }
@@ -395,7 +435,18 @@ const convertValues = {
       });
     }
 
+    // set order by clause
+    if (orderByColumnsList && orderByColumnsList.length) {
+      orderByColumnsList.forEach(itemOrderBy => {
+        const orderBy = convertValues.convertOrderByPropertyToGRPC({
+          columnName: itemOrderBy.columnName,
+          orderType: itemOrderBy.orderType
+        });
+        criteria.addOrderbycolumn(orderBy);
+      })
+    }
     criteria.setOrderbyclause(orderByClause);
+
     criteria.setLimit(limit);
 
     //  Return criteria
