@@ -24,7 +24,7 @@ PROTOC_ZIP=protoc-$VERSION-linux-x86_64.zip
 ## Download and install the file
 curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v$VERSION/$PROTOC_ZIP
 sudo unzip -o $PROTOC_ZIP -d /usr/local bin/protoc
-sudo unzip -o $PROTOC_ZIP -d /usr/local 'include/#'
+sudo unzip -o $PROTOC_ZIP -d /usr/local 'include/*'
 rm -f -v $PROTOC_ZIP
 
 ## Assign read and execute permissions
