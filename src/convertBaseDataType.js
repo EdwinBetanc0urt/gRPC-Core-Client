@@ -411,6 +411,43 @@ const convertBaseDataType = {
       };
     }
     return undefined;
+  },
+
+  convertResourceFromGRPC(resourceToConvert) {
+    if (resourceToConvert) {
+      return resourceToConvert.getData();
+    }
+    return undefined;
+  },
+
+  convertAttachmentFromGRPC(attachmentToConvert) {
+    if (attachmentToConvert) {
+      return {
+        attachmentUuid: attachmentToConvert.getAttachmentuuid(),
+        title: attachmentToConvert.getTitle(),
+        textMsg: attachmentToConvert.getTextmsg(),
+        resourcesList: attachmentToConvert.getResourcesList().map(itemResource => {
+          return convertBaseDataType.convertResourceFromGRPC(
+            itemResource
+          );
+        })
+      };
+    }
+    return undefined;
+  },
+
+  convertResourceReferenceFromGRPC(resourceReferenceToConvert) {
+    if (resourceReferenceToConvert) {
+      return {
+        resourceUuid: resourceReferenceToConvert.getResourceuuid(),
+        fileName: resourceReferenceToConvert.getFilename(),
+        fileSize: resourceReferenceToConvert.getFilesize(),
+        description: resourceReferenceToConvert.getDescription(),
+        textMsg: resourceReferenceToConvert.getTextmsg(),
+        contentType: resourceReferenceToConvert.getContenttype()
+      }
+    }
+    return undefined;
   }
 
 };
