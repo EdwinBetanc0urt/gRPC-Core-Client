@@ -426,9 +426,9 @@ const convertBaseDataType = {
         attachmentUuid: attachmentToConvert.getAttachmentuuid(),
         title: attachmentToConvert.getTitle(),
         textMsg: attachmentToConvert.getTextmsg(),
-        resourcesList: attachmentToConvert.getResourcesList().map(itemResource => {
-          return convertBaseDataType.convertResourceFromGRPC(
-            itemResource
+        resourceReferencesList: attachmentToConvert.getResourcereferencesList().map(itemResourceReference => {
+          return convertBaseDataType.convertResourceReferenceFromGRPC(
+            itemResourceReference
           );
         })
       };
@@ -441,7 +441,9 @@ const convertBaseDataType = {
       return {
         resourceUuid: resourceReferenceToConvert.getResourceuuid(),
         fileName: resourceReferenceToConvert.getFilename(),
-        fileSize: resourceReferenceToConvert.getFilesize(),
+        fileSize: convertBaseDataType.getDecimalFromGRPC(
+          resourceReferenceToConvert.getFilesize()
+        ),
         description: resourceReferenceToConvert.getDescription(),
         textMsg: resourceReferenceToConvert.getTextmsg(),
         contentType: resourceReferenceToConvert.getContenttype()

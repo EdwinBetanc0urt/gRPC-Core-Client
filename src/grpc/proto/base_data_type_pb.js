@@ -1707,8 +1707,8 @@ proto.data.Attachment.toObject = function(includeInstance, msg) {
     attachmentuuid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     title: jspb.Message.getFieldWithDefault(msg, 2, ""),
     textmsg: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    resourcesList: jspb.Message.toObjectList(msg.getResourcesList(),
-    proto.data.Resource.toObject, includeInstance)
+    resourcereferencesList: jspb.Message.toObjectList(msg.getResourcereferencesList(),
+    proto.data.ResourceReference.toObject, includeInstance)
   };
 
   if (includeInstance) {
@@ -1758,9 +1758,9 @@ proto.data.Attachment.deserializeBinaryFromReader = function(msg, reader) {
       msg.setTextmsg(value);
       break;
     case 4:
-      var value = new proto.data.Resource;
-      reader.readMessage(value,proto.data.Resource.deserializeBinaryFromReader);
-      msg.addResources(value);
+      var value = new proto.data.ResourceReference;
+      reader.readMessage(value,proto.data.ResourceReference.deserializeBinaryFromReader);
+      msg.addResourcereferences(value);
       break;
     default:
       reader.skipField();
@@ -1812,12 +1812,12 @@ proto.data.Attachment.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getResourcesList();
+  f = message.getResourcereferencesList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
       4,
       f,
-      proto.data.Resource.serializeBinaryToWriter
+      proto.data.ResourceReference.serializeBinaryToWriter
     );
   }
 };
@@ -1878,31 +1878,31 @@ proto.data.Attachment.prototype.setTextmsg = function(value) {
 
 
 /**
- * repeated Resource resources = 4;
- * @return {!Array<!proto.data.Resource>}
+ * repeated ResourceReference resourceReferences = 4;
+ * @return {!Array<!proto.data.ResourceReference>}
  */
-proto.data.Attachment.prototype.getResourcesList = function() {
-  return /** @type{!Array<!proto.data.Resource>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.data.Resource, 4));
+proto.data.Attachment.prototype.getResourcereferencesList = function() {
+  return /** @type{!Array<!proto.data.ResourceReference>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.data.ResourceReference, 4));
 };
 
 
 /**
- * @param {!Array<!proto.data.Resource>} value
+ * @param {!Array<!proto.data.ResourceReference>} value
  * @return {!proto.data.Attachment} returns this
 */
-proto.data.Attachment.prototype.setResourcesList = function(value) {
+proto.data.Attachment.prototype.setResourcereferencesList = function(value) {
   return jspb.Message.setRepeatedWrapperField(this, 4, value);
 };
 
 
 /**
- * @param {!proto.data.Resource=} opt_value
+ * @param {!proto.data.ResourceReference=} opt_value
  * @param {number=} opt_index
- * @return {!proto.data.Resource}
+ * @return {!proto.data.ResourceReference}
  */
-proto.data.Attachment.prototype.addResources = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.data.Resource, opt_index);
+proto.data.Attachment.prototype.addResourcereferences = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.data.ResourceReference, opt_index);
 };
 
 
@@ -1910,8 +1910,8 @@ proto.data.Attachment.prototype.addResources = function(opt_value, opt_index) {
  * Clears the list making it empty but non-null.
  * @return {!proto.data.Attachment} returns this
  */
-proto.data.Attachment.prototype.clearResourcesList = function() {
-  return this.setResourcesList([]);
+proto.data.Attachment.prototype.clearResourcereferencesList = function() {
+  return this.setResourcereferencesList([]);
 };
 
 
@@ -1949,7 +1949,7 @@ proto.data.ResourceReference.toObject = function(includeInstance, msg) {
   var f, obj = {
     resourceuuid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     filename: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    filesize: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    filesize: (f = msg.getFilesize()) && proto.data.Decimal.toObject(includeInstance, f),
     description: jspb.Message.getFieldWithDefault(msg, 4, ""),
     textmsg: jspb.Message.getFieldWithDefault(msg, 5, ""),
     contenttype: jspb.Message.getFieldWithDefault(msg, 6, "")
@@ -1998,7 +1998,8 @@ proto.data.ResourceReference.deserializeBinaryFromReader = function(msg, reader)
       msg.setFilename(value);
       break;
     case 3:
-      var value = /** @type {number} */ (reader.readInt64());
+      var value = new proto.data.Decimal;
+      reader.readMessage(value,proto.data.Decimal.deserializeBinaryFromReader);
       msg.setFilesize(value);
       break;
     case 4:
@@ -2057,10 +2058,11 @@ proto.data.ResourceReference.serializeBinaryToWriter = function(message, writer)
     );
   }
   f = message.getFilesize();
-  if (f !== 0) {
-    writer.writeInt64(
+  if (f != null) {
+    writer.writeMessage(
       3,
-      f
+      f,
+      proto.data.Decimal.serializeBinaryToWriter
     );
   }
   f = message.getDescription();
@@ -2124,20 +2126,39 @@ proto.data.ResourceReference.prototype.setFilename = function(value) {
 
 
 /**
- * optional int64 fileSize = 3;
- * @return {number}
+ * optional Decimal fileSize = 3;
+ * @return {?proto.data.Decimal}
  */
 proto.data.ResourceReference.prototype.getFilesize = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+  return /** @type{?proto.data.Decimal} */ (
+    jspb.Message.getWrapperField(this, proto.data.Decimal, 3));
 };
 
 
 /**
- * @param {number} value
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.ResourceReference} returns this
+*/
+proto.data.ResourceReference.prototype.setFilesize = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.data.ResourceReference} returns this
  */
-proto.data.ResourceReference.prototype.setFilesize = function(value) {
-  return jspb.Message.setProto3IntField(this, 3, value);
+proto.data.ResourceReference.prototype.clearFilesize = function() {
+  return this.setFilesize(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.data.ResourceReference.prototype.hasFilesize = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
