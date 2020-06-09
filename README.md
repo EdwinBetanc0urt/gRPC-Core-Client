@@ -57,6 +57,11 @@ protoc proto/core_functionality.proto \
 --grpc-web_out=import_style=commonjs,mode=grpcwebtext:src/grpc
 ```
 
+Or run:
+```Shell
+sh generate-stub.sh
+```
+
 The result is generated on: src/grpc folder
 - `base_data_type_pb.js`
 - `core_functionality_grpc_web_pb.js`

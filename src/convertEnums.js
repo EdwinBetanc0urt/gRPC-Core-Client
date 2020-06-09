@@ -15,11 +15,18 @@
  ************************************************************************************/
 
 const convertEnums = {
+  /**
+   * Get all values type or get key value type from value
+   * @param {object} list
+   * @param {string} key
+   * @param {number} value
+   * @returns {number|string|object}
+   */
   getValueOrKey({ list, key, value }) {
     if (key !== undefined) {
       return list[key];
     } else if (value !== undefined) {
-      return Object.keys(list).find(keyItem => EventType[keyItem] === value);
+      return Object.values(list).find(valueItem => valueItem === value);
     }
     // return all values
     return list;
