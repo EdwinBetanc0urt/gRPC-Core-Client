@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/@adempiere/grpc-core-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-core-client)
 [![License](https://img.shields.io/npm/l/@adempiere/grpc-core-client.svg)](https://github.com/erpcya/adempiere-core-client/blob/master/LICENSE)
 [![Downloads](https://img.shields.io/npm/dm/@adempiere/grpc-core-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-core-client)
-[![Dependencies](https://img.shields.io/librariesio/github/erpcya/grpc-pos-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-pos-client)
+[![Dependencies](https://img.shields.io/librariesio/github/erpcya/grpc-core-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-core-client)
 
 
 ADempiere Core Client write in Javascript for gRPC service, use it for connect with
@@ -43,14 +43,14 @@ protoc --version
 
 After installed it just go to source code folder an run it:
 
-Base Data Type
+Run Base Data Type gRPC
 ```
 protoc proto/base_data_type.proto \
 --js_out=import_style=commonjs:src/grpc \
 --grpc-web_out=import_style=commonjs,mode=grpcwebtext:src/grpc
 ```
 
-Core Functionality
+Run Core Functionality gRPC
 ```
 protoc proto/core_functionality.proto \
 --js_out=import_style=commonjs:src/grpc \

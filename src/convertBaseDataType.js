@@ -36,7 +36,8 @@ const convertBaseDataType = {
         break;
       // data type Number (float)
       case ValueType.DECIMAL:
-        returnValue = convertBaseDataType.getDecimalFromGRPC(value);
+        // TODO: Test it returnValue = convertBaseDataType.getDecimalValueFromGRPC(value.getDecimalvalue());
+        returnValue = convertBaseDataType.getDecimalValueFromGRPC(value);
         break;
       // data type Boolean
       case ValueType.BOOLEAN:
@@ -60,25 +61,47 @@ const convertBaseDataType = {
   },
 
   /**
-   * Get Decimal from Value
-   * @param value
-   * @return
+   * Get Decimal from Value definition
+   * @param Value.Decicimal
+   * @return {number}
    */
-  getDecimalFromGRPC(value) {
+  getDecimalValueFromGRPC(value) {
     const { isEmptyValue } = require('./convertValues.js');
+    const decimalObject = value.getDecimalvalue();
 
-    if (!isEmptyValue(value) && !isEmptyValue(value.getDecimalvalue())) {
-      // Convert it
-      return Number(value.getDecimalvalue());
+    if (isEmptyValue(decimalObject)) {
+      return undefined;
     }
 
-    return undefined;
+    // Convert it
+    return convertBaseDataType.getDecimalFromGRPC(decimalObject);
+  },
+
+  /**
+   * Get value from Decimal definition
+   * @param Decimal definition
+   * @return {number}
+   */
+  getDecimalFromGRPC(decimalToConvert) {
+    const { isEmptyValue } = require('./convertValues.js');
+
+    if (isEmptyValue(decimalToConvert)) {
+      return undefined;
+    }
+
+    const value = decimalToConvert.getDecimalvalue();
+    if (isEmptyValue(value)) {
+      return undefined;
+    }
+
+    // return number value
+    return Number(value);
   },
 
   /**
    * Get Date from a grpc value
    * @param value value to convert
-   * @return
+   * @return {date}
    */
   getDateFromGRPC(value) {
     const { isEmptyValue } = require('./convertValues.js');
@@ -93,7 +116,7 @@ const convertBaseDataType = {
    * Get String from a grpc value
    * @param value
    * @param uppercase
-   * @return
+   * @return {string}
    */
   getStringFromGRPC(value, uppercase = false) {
     const { isEmptyValue } = require('./convertValues.js');
@@ -113,7 +136,7 @@ const convertBaseDataType = {
   /**
    * Get integer from a grpc value
    * @param value
-   * @return
+   * @return {number}
    */
   getIntegerFromGRPC(value) {
     const { isEmptyValue } = require('./convertValues.js');
