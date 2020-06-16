@@ -1,7 +1,8 @@
 /*************************************************************************************
- * Product: ADempiere gRPC Business Data Client                                      *
+ * Product: ADempiere gRPC Core Client                                               *
  * Copyright (C) 2012-2018 E.R.P. Consultores y Asociados, C.A.                      *
  * Contributor(s): Yamel Senih ysenih@erpya.com                                      *
+ * Contributor(s): Edwin Betancourt EdwinBetanc0urt@outlook.com                      *
  * This program is free software: you can redistribute it and/or modify              *
  * it under the terms of the GNU General Public License as published by              *
  * the Free Software Foundation, either version 3 of the License, or                 *
@@ -11,7 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                     *
  * GNU General Public License for more details.                                      *
  * You should have received a copy of the GNU General Public License                 *
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.            *
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.             *
  ************************************************************************************/
 class SystemCore {
 
@@ -53,10 +54,12 @@ class SystemCore {
   getClientRequest() {
     const { ClientRequest } = require('./src/grpc/proto/core_functionality_pb.js');
     const clientRequest = new ClientRequest();
+
     clientRequest.setSessionuuid(this.sessionUuid);
     clientRequest.setLanguage(this.language);
     clientRequest.setOrganizationuuid(this.organizationUuid);
     clientRequest.setWarehouseuuid(this.warehouseUuid);
+
     return clientRequest;
   }
 
@@ -114,11 +117,14 @@ class SystemCore {
       .then(organizationsListResponse => {
         const { convertOrganizationFromGRPC } = require('./src/convertCoreFunctionality.js');
 
+        const organizationsList = organizationsListResponse.getOrganizationsList()
+          .map(organization => {
+            return convertOrganizationFromGRPC(organization);
+          });
+
         return {
           recordCount: organizationsListResponse.getRecordcount(),
-          organizationsList: organizationsListResponse.getOrganizationsList().map(organization => {
-            return convertOrganizationFromGRPC(organization);
-          }),
+          organizationsList,
           nextPageToken: organizationsListResponse.getNextPageToken(),
         };
       });
@@ -145,11 +151,14 @@ class SystemCore {
       .then(warehousesListResponse => {
         const { convertWarehouseFromGRPC } = require('./src/convertCoreFunctionality.js');
 
+        const warehousesList = warehousesListResponse.getWarehousesList()
+          .map(warehouse => {
+            return convertWarehouseFromGRPC(warehouse);
+          });
+
         return {
           recordCount: warehousesListResponse.getRecordcount(),
-          warehousesList: warehousesListResponse.getWarehousesList().map(warehouse => {
-            return convertWarehouseFromGRPC(warehouse);
-          }),
+          warehousesList,
           nextPageToken: warehousesListResponse.getNextPageToken(),
         };
       });
@@ -172,15 +181,170 @@ class SystemCore {
       .then(languageResponse => {
         const { convertLanguageFromGRPC } = require('./src/convertCoreFunctionality.js');
 
+        const languagesList = languageResponse.getLanguagesList()
+          .map(languageItem => {
+            return convertLanguageFromGRPC(languageItem);
+          });
+
         return {
           recordCount: languageResponse.getRecordcount(),
-          languagesList: languageResponse.getLanguagesList().map(languageItem => {
-            return convertLanguageFromGRPC(languageItem);
-          }),
+          languagesList,
           nextPageToken: languageResponse.getNextPageToken()
         };
       });
   }
+
+  requestGetBusinessPartner({
+    searchValue,
+    value,
+    name,
+    contactName,
+    eMail,
+    postalCode,
+    phone,
+    // Query
+    criteria
+  }) {
+    const { GetBusinessPartnerRequest } = require('./src/grpc/proto/core_functionality_pb.js');
+    const request = new GetBusinessPartnerRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setSeacthvalue(searchValue);
+    request.setValue(value);
+    request.setName(name);
+    request.setContactname(contactName);
+    request.setEmail(eMail);
+    request.setPostalcode(postalCode);
+    request.setPhone(phone);
+
+    if (!SystemCore.isEmptyValue(criteria)) {
+      const { convertCriteriaToGRPC } = require('./src/convertValues.js');
+      const criteriaGRPC = convertCriteriaToGRPC(criteria);
+
+      request.setCriteria(criteriaGRPC);
+    }
+
+    return this.getCoreFunctionalityService().getBusinessPartner(request)
+      .then(responseBusinessPartner => {
+        const { convertBusinessPartnerFromGRPC } = require('./src/convertCoreFunctionality.js');
+
+        return convertBusinessPartnerFromGRPC(responseBusinessPartner);
+      });
+  }
+
+  createBusinessPartner({
+    value,
+    taxId,
+    duns,
+    naics,
+    name,
+    lastName,
+    description,
+    contactName,
+    eMail,
+    phone,
+    businessPartnerGroupUuid,
+    // Location
+    address1,
+    address2,
+    address3,
+    address4,
+    cityUuid,
+    cityName,
+    postalCode,
+    regionUuid,
+    regionName,
+    countryUuid,
+    posUuid
+  }) {
+    const { CreateBusinessPartnerRequest } = require('./src/grpc/proto/core_functionality_pb.js');
+    const request = CreateBusinessPartnerRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setValue(value);
+    request.setTaxid(taxId);
+    request.setDuns(duns);
+    request.setNaics(naics);
+    request.setName(name);
+    request.setLastname(lastName);
+    request.setDescription(description);
+    request.setContactname(contactName);
+    request.setEmail(eMail);
+    request.setPhone(phone);
+    request.setBusinesspartnergroupuuid(businessPartnerGroupUuid);
+
+    // Location values
+    request.setAddress1(address1);
+    request.setAddress2(address2);
+    request.setAddress3(address3);
+    request.setAddress4(address4);
+    request.setCituuuid(cityUuid);
+    request.setCityname(cityName);
+    request.setPostalcode(postalCode);
+    request.setRegionuuid(regionUuid);
+    request.setRegionname(regionName);
+    request.setCountryuuid(countryUuid);
+    request.setPosuuid(posUuid);
+
+    return this.getCoreFunctionalityService().createBusinessPartner(request)
+      .then(responseCreateBusinessPartner => {
+        const { convertBusinessPartnerFromGRPC } = require('./src/convertCoreFunctionality.js');
+
+        return convertBusinessPartnerFromGRPC(responseCreateBusinessPartner);
+      });
+  }
+
+  requestListBusinessPartner({
+    searchValue,
+    value,
+    name,
+    contactName,
+    eMail,
+    postalCode,
+    phone,
+    // Query
+    criteria,
+    pageSize,
+    pageToken,
+  }) {
+    const { ListBusinessPartnerRequest } = require('./src/grpc/proto/core_functionality_pb.js');
+    const request = new ListBusinessPartnerRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setSeacthvalue(searchValue);
+    request.setValue(value);
+    request.setName(name);
+    request.setContactname(contactName);
+    request.setEmail(eMail);
+    request.setPostalcode(postalCode);
+    request.setPhone(phone);
+    request.setPageToken(pageToken);
+    request.setPageSize(pageSize);
+
+    if (!SystemCore.isEmptyValue(criteria)) {
+      const { convertCriteriaToGRPC } = require('./src/convertValues.js');
+      const criteriaGRPC = convertCriteriaToGRPC(criteria);
+
+      request.setCriteria(criteriaGRPC);
+    }
+
+    return this.getCoreFunctionalityService().listBusinessPartner(request)
+      .then(responseListBusinessPartner => {
+        const { convertBusinessPartnerFromGRPC } = require('./src/convertCoreFunctionality.js');
+
+        const businessPartnersList = responseListBusinessPartner.getBusinesspartnersList()
+          .map(businessPartner => {
+            return convertBusinessPartnerFromGRPC(businessPartner);
+          });
+
+        return {
+          recordCount: responseListBusinessPartner.getRecordcount(),
+          businessPartnersList,
+          nextPageToken: responseListBusinessPartner.getNextPageToken()
+        };
+      });
+  }
+
 }
 
 module.exports = SystemCore;

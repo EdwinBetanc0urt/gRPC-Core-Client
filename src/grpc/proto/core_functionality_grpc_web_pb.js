@@ -392,5 +392,245 @@ proto.data.CoreFunctionalityPromiseClient.prototype.listLanguages =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.data.GetBusinessPartnerRequest,
+ *   !proto.data.BusinessPartner>}
+ */
+const methodDescriptor_CoreFunctionality_GetBusinessPartner = new grpc.web.MethodDescriptor(
+  '/data.CoreFunctionality/GetBusinessPartner',
+  grpc.web.MethodType.UNARY,
+  proto.data.GetBusinessPartnerRequest,
+  proto.data.BusinessPartner,
+  /**
+   * @param {!proto.data.GetBusinessPartnerRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.BusinessPartner.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.data.GetBusinessPartnerRequest,
+ *   !proto.data.BusinessPartner>}
+ */
+const methodInfo_CoreFunctionality_GetBusinessPartner = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.data.BusinessPartner,
+  /**
+   * @param {!proto.data.GetBusinessPartnerRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.BusinessPartner.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.data.GetBusinessPartnerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.data.BusinessPartner)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.data.BusinessPartner>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.data.CoreFunctionalityClient.prototype.getBusinessPartner =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/data.CoreFunctionality/GetBusinessPartner',
+      request,
+      metadata || {},
+      methodDescriptor_CoreFunctionality_GetBusinessPartner,
+      callback);
+};
+
+
+/**
+ * @param {!proto.data.GetBusinessPartnerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.data.BusinessPartner>}
+ *     A native promise that resolves to the response
+ */
+proto.data.CoreFunctionalityPromiseClient.prototype.getBusinessPartner =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/data.CoreFunctionality/GetBusinessPartner',
+      request,
+      metadata || {},
+      methodDescriptor_CoreFunctionality_GetBusinessPartner);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.data.CreateBusinessPartnerRequest,
+ *   !proto.data.BusinessPartner>}
+ */
+const methodDescriptor_CoreFunctionality_CreateBusinessPartner = new grpc.web.MethodDescriptor(
+  '/data.CoreFunctionality/CreateBusinessPartner',
+  grpc.web.MethodType.UNARY,
+  proto.data.CreateBusinessPartnerRequest,
+  proto.data.BusinessPartner,
+  /**
+   * @param {!proto.data.CreateBusinessPartnerRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.BusinessPartner.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.data.CreateBusinessPartnerRequest,
+ *   !proto.data.BusinessPartner>}
+ */
+const methodInfo_CoreFunctionality_CreateBusinessPartner = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.data.BusinessPartner,
+  /**
+   * @param {!proto.data.CreateBusinessPartnerRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.BusinessPartner.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.data.CreateBusinessPartnerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.data.BusinessPartner)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.data.BusinessPartner>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.data.CoreFunctionalityClient.prototype.createBusinessPartner =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/data.CoreFunctionality/CreateBusinessPartner',
+      request,
+      metadata || {},
+      methodDescriptor_CoreFunctionality_CreateBusinessPartner,
+      callback);
+};
+
+
+/**
+ * @param {!proto.data.CreateBusinessPartnerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.data.BusinessPartner>}
+ *     A native promise that resolves to the response
+ */
+proto.data.CoreFunctionalityPromiseClient.prototype.createBusinessPartner =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/data.CoreFunctionality/CreateBusinessPartner',
+      request,
+      metadata || {},
+      methodDescriptor_CoreFunctionality_CreateBusinessPartner);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.data.ListBusinessPartnerRequest,
+ *   !proto.data.ListBusinessPartnerResponse>}
+ */
+const methodDescriptor_CoreFunctionality_ListBusinessPartner = new grpc.web.MethodDescriptor(
+  '/data.CoreFunctionality/ListBusinessPartner',
+  grpc.web.MethodType.UNARY,
+  proto.data.ListBusinessPartnerRequest,
+  proto.data.ListBusinessPartnerResponse,
+  /**
+   * @param {!proto.data.ListBusinessPartnerRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.ListBusinessPartnerResponse.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.data.ListBusinessPartnerRequest,
+ *   !proto.data.ListBusinessPartnerResponse>}
+ */
+const methodInfo_CoreFunctionality_ListBusinessPartner = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.data.ListBusinessPartnerResponse,
+  /**
+   * @param {!proto.data.ListBusinessPartnerRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.ListBusinessPartnerResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.data.ListBusinessPartnerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.data.ListBusinessPartnerResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.data.ListBusinessPartnerResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.data.CoreFunctionalityClient.prototype.listBusinessPartner =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/data.CoreFunctionality/ListBusinessPartner',
+      request,
+      metadata || {},
+      methodDescriptor_CoreFunctionality_ListBusinessPartner,
+      callback);
+};
+
+
+/**
+ * @param {!proto.data.ListBusinessPartnerRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.data.ListBusinessPartnerResponse>}
+ *     A native promise that resolves to the response
+ */
+proto.data.CoreFunctionalityPromiseClient.prototype.listBusinessPartner =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/data.CoreFunctionality/ListBusinessPartner',
+      request,
+      metadata || {},
+      methodDescriptor_CoreFunctionality_ListBusinessPartner);
+};
+
+
 module.exports = proto.data;
 
