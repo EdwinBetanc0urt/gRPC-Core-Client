@@ -194,45 +194,7 @@ class SystemCore {
       });
   }
 
-  requestGetBusinessPartner({
-    searchValue,
-    value,
-    name,
-    contactName,
-    eMail,
-    postalCode,
-    phone,
-    // Query
-    criteria
-  }) {
-    const { GetBusinessPartnerRequest } = require('./src/grpc/proto/core_functionality_pb.js');
-    const request = new GetBusinessPartnerRequest();
-
-    request.setClientrequest(this.getClientRequest());
-    request.setSeacthvalue(searchValue);
-    request.setValue(value);
-    request.setName(name);
-    request.setContactname(contactName);
-    request.setEmail(eMail);
-    request.setPostalcode(postalCode);
-    request.setPhone(phone);
-
-    if (!SystemCore.isEmptyValue(criteria)) {
-      const { convertCriteriaToGRPC } = require('./src/convertValues.js');
-      const criteriaGRPC = convertCriteriaToGRPC(criteria);
-
-      request.setCriteria(criteriaGRPC);
-    }
-
-    return this.getCoreFunctionalityService().getBusinessPartner(request)
-      .then(responseBusinessPartner => {
-        const { convertBusinessPartnerFromGRPC } = require('./src/convertCoreFunctionality.js');
-
-        return convertBusinessPartnerFromGRPC(responseBusinessPartner);
-      });
-  }
-
-  createBusinessPartner({
+  requestCreateBusinessPartner({
     value,
     taxId,
     duns,
@@ -294,7 +256,21 @@ class SystemCore {
       });
   }
 
-  requestListBusinessPartner({
+  requestGetBusinessPartner(parametersToSearch) {
+    const { GetBusinessPartnerRequest } = require('./src/grpc/proto/core_functionality_pb.js');
+    let request = new GetBusinessPartnerRequest();
+
+    request = this.setSearchBusinessPartner(parametersToSearch, request);
+
+    return this.getCoreFunctionalityService().getBusinessPartner(request)
+      .then(responseBusinessPartner => {
+        const { convertBusinessPartnerFromGRPC } = require('./src/convertCoreFunctionality.js');
+
+        return convertBusinessPartnerFromGRPC(responseBusinessPartner);
+      });
+  }
+
+  setSearchBusinessPartner({
     searchValue,
     value,
     name,
@@ -302,24 +278,17 @@ class SystemCore {
     eMail,
     postalCode,
     phone,
-    // Query
-    criteria,
-    pageSize,
-    pageToken,
-  }) {
-    const { ListBusinessPartnerRequest } = require('./src/grpc/proto/core_functionality_pb.js');
-    const request = new ListBusinessPartnerRequest();
-
+    criteria
+  }, request
+  ) {
     request.setClientrequest(this.getClientRequest());
-    request.setSeacthvalue(searchValue);
+    request.setSearchvalue(searchValue);
     request.setValue(value);
     request.setName(name);
     request.setContactname(contactName);
     request.setEmail(eMail);
     request.setPostalcode(postalCode);
     request.setPhone(phone);
-    request.setPageToken(pageToken);
-    request.setPageSize(pageSize);
 
     if (!SystemCore.isEmptyValue(criteria)) {
       const { convertCriteriaToGRPC } = require('./src/convertValues.js');
@@ -327,6 +296,18 @@ class SystemCore {
 
       request.setCriteria(criteriaGRPC);
     }
+
+    return request;
+  }
+
+  requestListBusinessPartner(parametersToSearch) {
+    const { ListBusinessPartnerRequest } = require('./src/grpc/proto/core_functionality_pb.js');
+    let request = new ListBusinessPartnerRequest();
+    const { pageSize, pageToken } = parametersToSearch;
+
+    request = this.setSearchBusinessPartner(parametersToSearch, request);
+    request.setPageToken(pageToken);
+    request.setPageSize(pageSize);
 
     return this.getCoreFunctionalityService().listBusinessPartner(request)
       .then(responseListBusinessPartner => {
