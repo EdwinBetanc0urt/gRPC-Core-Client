@@ -220,7 +220,7 @@ class SystemCore {
     posUuid
   }) {
     const { CreateBusinessPartnerRequest } = require('./src/grpc/proto/core_functionality_pb.js');
-    const request = CreateBusinessPartnerRequest();
+    const request = new CreateBusinessPartnerRequest();
 
     request.setClientrequest(this.getClientRequest());
     request.setValue(value);
@@ -240,7 +240,7 @@ class SystemCore {
     request.setAddress2(address2);
     request.setAddress3(address3);
     request.setAddress4(address4);
-    request.setCituuuid(cityUuid);
+    request.setCityuuid(cityUuid);
     request.setCityname(cityName);
     request.setPostalcode(postalCode);
     request.setRegionuuid(regionUuid);
