@@ -284,6 +284,61 @@ const convertCoreFunctionality = {
       };
     }
     return undefined;
+  },
+
+  convertPriceListFromGRPC(priceListToConvert) {
+    if (priceListToConvert) {
+      return {
+        uuid: priceListToConvert.getUuid(),
+        id: priceListToConvert.getId(),
+        name: priceListToConvert.getName(),
+        description: priceListToConvert.getDescription(),
+        currency: convertCoreFunctionality.convertCountryFromGRPC(
+          priceListToConvert.getCurrency()
+        ),
+        isDefault: priceListToConvert.getIsdefault(),
+        isTaxIncluded: priceListToConvert.getIstaxincluded(),
+        isEnforcePriceLimit: priceListToConvert.getIsenforcepricelimit(),
+        isNetPrice: priceListToConvert.getIsnetprice(),
+        pricePrecision: priceListToConvert.getPriceprecision()
+      };
+    }
+    return undefined;
+  },
+
+  convertBankAccountFromGRPC(bankAccountToConvert) {
+    if (bankAccountToConvert) {
+      const { getDecimalFromGRPC } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
+      const { getBankAccount_BankAccountType } = require('./convertEnums.js');
+
+      return {
+        uuid: bankAccountToConvert.getUuid(),
+        id: bankAccountToConvert.getId(),
+        name: bankAccountToConvert.getName(),
+        accountNo: bankAccountToConvert.getAccountno(),
+        description: bankAccountToConvert.getDescription(),
+        currency: convertCoreFunctionality.convertCurrencyFromGRPC(
+          bankAccountToConvert.getCurrency()
+        ),
+        bban: bankAccountToConvert.getBban(),
+        iban: bankAccountToConvert.getIban(),
+        creditLimit: getDecimalFromGRPC(
+          bankAccountToConvert.getCreditlimit()
+        ),
+        currentBalance: getDecimalFromGRPC(
+          bankAccountToConvert.getCurrentbalance()
+        ),
+        isDefault: bankAccountToConvert.getIsdefault(),
+        businessPartner: convertCoreFunctionality.convertBusinessPartnerFromGRPC(
+          bankAccountToConvert.getBusinesspartner()
+        ),
+        bankAccountType: bankAccountToConvert.getBankaccounttype(),
+        bankAccountTypeName: getBankAccount_BankAccountType({
+          value: bankAccountToConvert.getBankaccounttype()
+        })
+      };
+    }
+    return undefined;
   }
 
 };

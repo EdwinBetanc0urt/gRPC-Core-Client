@@ -179,11 +179,10 @@ const convertValues = {
     const convertedValue = new Value();
 
     convertedValue.setValuetype(ValueType.DATE);
-    if (Object.prototype.toString.call(value) === '[object Date]') {
-      value = value.getTime();
-      convertedValue.setLongvalue(value);
-    }
-    convertedValue.setValuetype(ValueType.DATE);
+    convertedValue.setLongvalue(
+      convertValues.getLongFromDate(value)
+    );
+
     return convertedValue;
   },
 
@@ -201,6 +200,7 @@ const convertValues = {
     convertedValue.setDecimalvalue(
       convertValues.getDecimalFromNumber(value)
     );
+
     return convertedValue;
   },
 
@@ -229,6 +229,16 @@ const convertValues = {
       convertedDecimalValue.setScale(scale);
     }
     return convertedDecimalValue;
+  },
+
+  getLongFromDate(dateValue) {
+    let longValue = dateValue;
+    if (!convertValues.isEmptyValue(dateValue) &&
+      Object.prototype.toString.call(value) === '[object Date]') {
+      longValue = dateValue.getTime();
+    }
+
+    return longValue;
   },
 
   /**

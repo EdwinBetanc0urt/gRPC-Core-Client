@@ -121,6 +121,22 @@ const convertEnums = {
       key,
       value
     });
+  },
+
+  /**
+   * @returns
+      CHECKING = 0;
+      SAVINGS = 1;
+   */
+  getBankAccount_BankAccountType({ key, value }) {
+    const { BankAccount } = require('./grpc/proto/base_data_type_pb.js');
+    const { BankAccountType } = BankAccount;
+
+    return convertEnums.getValueOrKey({
+      list: BankAccountType,
+      key,
+      value
+    });
   }
 
 };
