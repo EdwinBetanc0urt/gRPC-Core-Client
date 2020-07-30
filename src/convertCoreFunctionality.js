@@ -293,7 +293,7 @@ const convertCoreFunctionality = {
         id: priceListToConvert.getId(),
         name: priceListToConvert.getName(),
         description: priceListToConvert.getDescription(),
-        currency: convertCoreFunctionality.convertCountryFromGRPC(
+        currency: convertCoreFunctionality.convertCurrencyFromGRPC(
           priceListToConvert.getCurrency()
         ),
         isDefault: priceListToConvert.getIsdefault(),

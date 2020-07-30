@@ -129,7 +129,7 @@ const convertEnums = {
       SAVINGS = 1;
    */
   getBankAccount_BankAccountType({ key, value }) {
-    const { BankAccount } = require('./grpc/proto/base_data_type_pb.js');
+    const { BankAccount } = require('./grpc/proto/core_functionality_pb');
     const { BankAccountType } = BankAccount;
 
     return convertEnums.getValueOrKey({
