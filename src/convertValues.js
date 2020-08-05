@@ -48,7 +48,7 @@ const convertValues = {
    * @returns {Value}
    */
   convertValueToGRPC({ value, valueType }) {
-    var convertedValue;
+    let convertedValue;
 
     if (valueType) {
       return convertValues.convertValueToGRPCWithValueType({ value, valueType });
@@ -234,7 +234,7 @@ const convertValues = {
   getLongFromDate(dateValue) {
     let longValue = dateValue;
     if (!convertValues.isEmptyValue(dateValue) &&
-      Object.prototype.toString.call(value) === '[object Date]') {
+      Object.prototype.toString.call(dateValue) === '[object Date]') {
       longValue = dateValue.getTime();
     }
 
@@ -363,7 +363,7 @@ const convertValues = {
       );
     }
     // set values
-    if (values && values.length) {
+    if (!convertValues.isEmptyValue(values)) {
       values.forEach(itemValue => {
         const convertedValue = convertValues.convertValueToGRPC({
           value: itemValue
@@ -428,7 +428,7 @@ const convertValues = {
     criteria.setReferenceuuid(referenceUuid);
 
     // add values
-    if (valuesList && valuesList.length) {
+    if (!convertValues.isEmptyValue(valuesList)) {
       valuesList.forEach(itemValue => {
         const value = convertValues.convertValueToGRPC({
           value: itemValue
@@ -438,7 +438,7 @@ const convertValues = {
     }
 
     // add conditions
-    if (conditionsList && conditionsList.length) {
+    if (!convertValues.isEmptyValue(conditionsList)) {
       conditionsList.forEach(itemCondition => {
         const convertCondition = convertValues.convertConditionToGRPC(itemCondition);
         criteria.addConditions(convertCondition);
@@ -446,7 +446,7 @@ const convertValues = {
     }
 
     // set order by clause
-    if (orderByColumnsList && orderByColumnsList.length) {
+    if (!convertValues.isEmptyValue(orderByColumnsList)) {
       orderByColumnsList.forEach(itemOrderBy => {
         const orderBy = convertValues.convertOrderByPropertyToGRPC({
           columnName: itemOrderBy.columnName,
