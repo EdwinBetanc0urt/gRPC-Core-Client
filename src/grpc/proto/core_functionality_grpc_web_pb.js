@@ -632,5 +632,85 @@ proto.data.CoreFunctionalityPromiseClient.prototype.listBusinessPartner =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.data.GetConversionRateRequest,
+ *   !proto.data.ConversionRate>}
+ */
+const methodDescriptor_CoreFunctionality_GetConversionRate = new grpc.web.MethodDescriptor(
+  '/data.CoreFunctionality/GetConversionRate',
+  grpc.web.MethodType.UNARY,
+  proto.data.GetConversionRateRequest,
+  proto.data.ConversionRate,
+  /**
+   * @param {!proto.data.GetConversionRateRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.ConversionRate.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.data.GetConversionRateRequest,
+ *   !proto.data.ConversionRate>}
+ */
+const methodInfo_CoreFunctionality_GetConversionRate = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.data.ConversionRate,
+  /**
+   * @param {!proto.data.GetConversionRateRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.ConversionRate.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.data.GetConversionRateRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.data.ConversionRate)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.data.ConversionRate>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.data.CoreFunctionalityClient.prototype.getConversionRate =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/data.CoreFunctionality/GetConversionRate',
+      request,
+      metadata || {},
+      methodDescriptor_CoreFunctionality_GetConversionRate,
+      callback);
+};
+
+
+/**
+ * @param {!proto.data.GetConversionRateRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.data.ConversionRate>}
+ *     A native promise that resolves to the response
+ */
+proto.data.CoreFunctionalityPromiseClient.prototype.getConversionRate =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/data.CoreFunctionality/GetConversionRate',
+      request,
+      metadata || {},
+      methodDescriptor_CoreFunctionality_GetConversionRate);
+};
+
+
 module.exports = proto.data;
 

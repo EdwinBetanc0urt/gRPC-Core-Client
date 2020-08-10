@@ -11,10 +11,26 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                     *
  * GNU General Public License for more details.                                      *
  * You should have received a copy of the GNU General Public License                 *
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.            *
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.             *
  ************************************************************************************/
 
 const convertValues = {
+
+  /**
+   * Get type of value
+   * @param {mixed} value
+   * @returns {string} Undefined, Boolean, String, Function...
+   */
+  typeOfValue(value) {
+    // '[object typeOfValue]'
+    const typeOfValue = Object.prototype
+      .toString
+      .call(value)
+      .match(/^\[object\s(.*)\]$/)[1];
+
+    return typeOfValue;
+  },
+
   /**
    * Checks if value is empty. Deep-checks arrays and objects
    * Note: isEmpty([]) == true, isEmpty({}) == true, isEmpty([{0:false},"",0]) == true, isEmpty({0:1}) == false
@@ -22,24 +38,58 @@ const convertValues = {
    * @returns {boolean}
    */
   isEmptyValue(value) {
-    if (value === undefined || value == null || Number.isNaN(value)) {
-      return true;
-    } else if (String(value).trim() === '-1') {
-      return true;
-    } else if (typeof value === 'string') {
-      return Boolean(!value.trim().length);
-    } else if (['boolean', 'function', 'number'].includes(typeof value) ||
-      Object.prototype.toString.call(value) === '[object Date]') {
-      return false;
-    } else if (['[object Map]', '[object Set]'].includes(Object.prototype.toString.call(value))) {
-      return Boolean(!value.size);
-    } else if (Array.isArray(value)) {
-      return Boolean(!value.length);
-    } else if (typeof value === 'object') {
-      return Boolean(!Object.keys(value).length);
+    const typeOfValue = convertValues.typeOfValue(value);
+    let isEmpty = true;
+
+    switch (typeOfValue) {
+      case 'Undefined':
+      case 'Error':
+      case 'Null':
+        isEmpty = true;
+        break;
+
+      case 'Boolean':
+      case 'Date':
+      case 'Function': // Or class
+      case 'Math': // TODO: Evaluate as number
+      case 'RegExp':
+        isEmpty = false;
+        break;
+
+      case 'String':
+        isEmpty = Boolean(!value.trim().length);
+        break;
+
+      case 'Number':
+        isEmpty = false;
+        if (Number.isNaN(value)) {
+          isEmpty = true;
+        }
+        break;
+
+      case 'JSON':
+        isEmpty = true;
+        if (value.trim().length) {
+          isEmpty = Boolean(value.trim() === '{}');
+        }
+        break;
+
+      case 'Object':
+        isEmpty = Boolean(!Object.keys(value).length);
+        break;
+
+      case 'Arguments':
+      case 'Array':
+        isEmpty = Boolean(!value.length);
+        break;
+
+      case 'Map':
+      case 'Set':
+        isEmpty = Boolean(!value.size);
+        break;
     }
 
-    return true;
+    return isEmpty;
   },
 
   /**
@@ -51,26 +101,38 @@ const convertValues = {
     let convertedValue;
 
     if (valueType) {
-      return convertValues.convertValueToGRPCWithValueType({ value, valueType });
+      convertedValue = convertValues.convertValueToGRPCWithValueType({
+        value,
+        valueType
+      });
+      return convertedValue;
     }
 
     // evaluate type of value
-    if (convertValues.isEmptyValue(value)) {
-      return convertValues.getValueFromString(value);
+    const typeOfValue = convertValues.typeOfValue(value);
+
+    switch (typeOfValue) {
+      case 'Number':
+        if (Number.isInteger(value)) {
+          convertedValue = convertValues.getValueFromInteger(value);
+        } else {
+          convertedValue = convertValues.getValueFromDecimal(value);
+        }
+        break;
+
+      case 'Boolean':
+        convertedValue = convertValues.getValueFromBoolean(value);
+        break;
+
+      case 'Date':
+        convertedValue = convertValues.getValueFromDate(value);
+
+      case 'String':
+      default:
+        convertedValue = convertValues.getValueFromString(value);
+        break;
     }
-    if (typeof (value) === 'number') {
-      if (Number.isInteger(value)) {
-        convertedValue = convertValues.getValueFromInteger(value);
-      } else {
-        convertedValue = convertValues.getValueFromDecimal(value);
-      }
-    } else if (typeof (value) === 'boolean') {
-      convertedValue = convertValues.getValueFromBoolean(value);
-    } else if (Object.prototype.toString.call(value) === '[object Date]') {
-      convertedValue = convertValues.getValueFromDate(value);
-    } else {
-      convertedValue = convertValues.getValueFromString(value);
-    }
+
     return convertedValue;
   },
 
@@ -232,13 +294,12 @@ const convertValues = {
   },
 
   getLongFromDate(dateValue) {
-    let longValue = dateValue;
     if (!convertValues.isEmptyValue(dateValue) &&
-      Object.prototype.toString.call(dateValue) === '[object Date]') {
-      longValue = dateValue.getTime();
+      convertValues.typeOfValue(dateValue) === 'Date') {
+      return dateValue.getTime();
     }
 
-    return longValue;
+    return dateValue;
   },
 
   /**
