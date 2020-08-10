@@ -340,11 +340,15 @@ class SystemCore {
    * @param {string} conversionTypeUuid
    * @param {string} currencyFromUuid
    * @param {string} currencyToUuid
-   * @param {date}   conversionDate   * @param {*} param0
-
+   * @param {date}   conversionDate
    * @returns {promise}
    */
-  requestGetConversionRate({ conversionTypeUuid, currencyFromUuid, currencyToUuid, conversionDate }) {
+  requestGetConversionRate({
+    conversionTypeUuid,
+    currencyFromUuid,
+    currencyToUuid,
+    conversionDate
+  }) {
     const { GetConversionRateRequest } = require('./src/grpc/proto/core_functionality_pb.js');
     const request = new GetConversionRateRequest();
 
