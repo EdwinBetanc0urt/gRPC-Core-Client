@@ -11,7 +11,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                     *
  * GNU General Public License for more details.                                      *
  * You should have received a copy of the GNU General Public License                 *
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.            *
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.             *
  ************************************************************************************/
 
 const convertCoreFunctionality = {
@@ -336,6 +336,33 @@ const convertCoreFunctionality = {
         bankAccountTypeName: getBankAccount_BankAccountType({
           value: bankAccountToConvert.getBankaccounttype()
         })
+      };
+    }
+    return undefined;
+  },
+
+  convertConversionRateFromGRPC(conversionRateToConvert) {
+    if (conversionRateToConvert) {
+      const { getDecimalFromGRPC } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
+
+      return {
+        uuid: conversionRateToConvert.getUuid(),
+        id: conversionRateToConvert.getId(),
+        conversionTypeUuid: conversionRateToConvert.getConversiontypeuuid(),
+        validFrom: conversionRateToConvert.getValidfrom(),
+        validTo: conversionRateToConvert.getValidto(),
+        currencyFrom: convertCoreFunctionality.convertCurrencyFromGRPC(
+          conversionRateToConvert.getCurrencyfrom()
+        ),
+        currencyTo: convertCoreFunctionality.convertCurrencyFromGRPC(
+          conversionRateToConvert.getCurrencyto()
+        ),
+        multiplyRate: getDecimalFromGRPC(
+          conversionRateToConvert.getMultiplyrate()
+        ),
+        divideRate: getDecimalFromGRPC(
+          conversionRateToConvert.getDividerate()
+        )
       };
     }
     return undefined;

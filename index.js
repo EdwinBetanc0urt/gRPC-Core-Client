@@ -64,6 +64,16 @@ class SystemCore {
   }
 
   /**
+   * Get type of value
+   * @param {mixed} value
+   * @returns {string} Undefined, Boolean, String, Function...
+   */
+  static typeOfValue(value) {
+    const { typeOfValue } = require('./src/convertValues.js');
+    return typeOfValue(value);
+  }
+
+  /**
    * Checks if value is empty. Deep-checks arrays and objects
    * Note: isEmpty([]) == true, isEmpty({}) == true, isEmpty([{0:false},"",0]) == true, isEmpty({0:1}) == false
    * @param   {boolean|array|object|number|string|date|map|set|function} value
@@ -324,6 +334,36 @@ class SystemCore {
           nextPageToken: responseListBusinessPartner.getNextPageToken()
         };
       });
+  }
+
+  /**
+   * @param {string} conversionTypeUuid
+   * @param {string} currencyFromUuid
+   * @param {string} currencyToUuid
+   * @param {date}   conversionDate   * @param {*} param0
+
+   * @returns {promise}
+   */
+  requestGetConversionRate({ conversionTypeUuid, currencyFromUuid, currencyToUuid, conversionDate }) {
+    const { GetConversionRateRequest } = require('./src/grpc/proto/core_functionality_pb.js');
+    const request = new GetConversionRateRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setConversiontypeuuid(conversionTypeUuid);
+    request.setCurrencyfromuuid(currencyFromUuid);
+    request.setCurrencytouuid(currencyToUuid);
+
+    if (SystemCore.typeOfValue(conversionDate) === 'Date') {
+      conversionDate = conversionDate.getTime();
+    }
+    request.setConversiondate(conversionDate);
+
+    return this.getCoreFunctionalityService().getConversionRate(request)
+      .then(responseConversionRate => {
+        const { convertConversionRateFromGRPC } = require('./src/convertCoreFunctionality.js');
+
+        return convertConversionRateFromGRPC(responseConversionRate);
+      })
   }
 
 }
