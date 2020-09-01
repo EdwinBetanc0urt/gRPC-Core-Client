@@ -17,6 +17,8 @@ grpc.web = require('grpc-web');
 
 
 var proto_base_data_type_pb = require('../proto/base_data_type_pb.js')
+
+var proto_client_pb = require('../proto/client_pb.js')
 const proto = {};
 proto.data = require('./core_functionality_pb.js');
 
@@ -140,7 +142,7 @@ proto.data.CoreFunctionalityClient.prototype.getCountry =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.Country>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.CoreFunctionalityPromiseClient.prototype.getCountry =
     function(request, metadata) {
@@ -220,7 +222,7 @@ proto.data.CoreFunctionalityClient.prototype.listOrganizations =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.ListOrganizationsResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.CoreFunctionalityPromiseClient.prototype.listOrganizations =
     function(request, metadata) {
@@ -300,7 +302,7 @@ proto.data.CoreFunctionalityClient.prototype.listWarehouses =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.ListWarehousesResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.CoreFunctionalityPromiseClient.prototype.listWarehouses =
     function(request, metadata) {
@@ -380,7 +382,7 @@ proto.data.CoreFunctionalityClient.prototype.listLanguages =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.ListLanguagesResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.CoreFunctionalityPromiseClient.prototype.listLanguages =
     function(request, metadata) {
@@ -460,7 +462,7 @@ proto.data.CoreFunctionalityClient.prototype.getBusinessPartner =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.BusinessPartner>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.CoreFunctionalityPromiseClient.prototype.getBusinessPartner =
     function(request, metadata) {
@@ -540,7 +542,7 @@ proto.data.CoreFunctionalityClient.prototype.createBusinessPartner =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.BusinessPartner>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.CoreFunctionalityPromiseClient.prototype.createBusinessPartner =
     function(request, metadata) {
@@ -620,7 +622,7 @@ proto.data.CoreFunctionalityClient.prototype.listBusinessPartner =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.ListBusinessPartnerResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.CoreFunctionalityPromiseClient.prototype.listBusinessPartner =
     function(request, metadata) {
@@ -700,7 +702,7 @@ proto.data.CoreFunctionalityClient.prototype.getConversionRate =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.ConversionRate>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.CoreFunctionalityPromiseClient.prototype.getConversionRate =
     function(request, metadata) {
