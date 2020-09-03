@@ -11,10 +11,16 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                     #
 # GNU General Public License for more details.                                      #
 # You should have received a copy of the GNU General Public License                 #
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.            #
+# along with this program. If not, see <https://www.gnu.org/licenses/>.             #
 #####################################################################################
 
 OUT_DIR=src/grpc
+
+# Generate Stub to client.proto file
+protoc proto/client.proto \
+    --js_out=import_style=commonjs:$OUT_DIR \
+    --grpc-web_out=import_style=commonjs,mode=grpcwebtext:$OUT_DIR
+
 
 # Generate Stub to base_data_type.proto file
 protoc proto/base_data_type.proto \
